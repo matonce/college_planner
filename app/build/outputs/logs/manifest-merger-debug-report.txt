@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:2:1-21:12
+ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:2:1-16:12
 	package
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:3:5-30
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:2:70-95
 		INJECTED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml
 		INJECTED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -14,7 +14,7 @@ ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projek
 		INJECTED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml
 		INJECTED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml
 application
-ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:5:5-19:19
+ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:4:5-14:19
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:26.0.0-alpha1] /var/cache/fscache/home/student1/emdogan/.android/build-cache/83807e03870fbba7cd7abbf3eb1da607125ce199/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /var/cache/fscache/home/student1/emdogan/.android/build-cache/dbe451e76891223485b93a617eea2dffee2e3667/output/AndroidManifest.xml:29:5-20
@@ -26,31 +26,31 @@ MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /var/cac
 MERGED from [com.android.support:support-compat:26.0.0-alpha1] /var/cache/fscache/home/student1/emdogan/.android/build-cache/d9f2ea39ad5c14aa3629ec09fc5b53f74c0009b3/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /var/cache/fscache/home/student1/emdogan/.android/build-cache/e9b90d3e1cd78e2b5e88130a514743481708b5d9/output/AndroidManifest.xml:9:5-20
 	android:label
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:5:9-41
 	android:supportsRtl
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:10:9-35
-	android:roundIcon
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:9:9-54
-	android:allowBackup
 		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:6:9-35
+	android:roundIcon
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:5:42-87
+	android:allowBackup
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:4:18-44
 	android:icon
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:7:9-43
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:4:45-79
 	android:theme
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:11:9-40
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:6:36-67
 activity#emdogan.projekt.MainActivity
-ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:12:9-18:20
+ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:7:9-13:20
 	android:name
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:12:19-47
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:7:19-47
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:13:13-17:29
+ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:8:13-12:29
 action#android.intent.action.MAIN
-ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:14:17-69
+ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:9:17-69
 	android:name
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:14:25-66
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:9:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:16:17-77
+ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:11:17-77
 	android:name
-		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:16:27-74
+		ADDED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml:11:27-74
 uses-sdk
 INJECTED from /var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/AndroidManifest.xml:21:5-23:78

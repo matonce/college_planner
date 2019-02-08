@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/opt/android-sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_acc73e4ee5a95a149a64c98ae3a02c1a889b532c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/a7297174b03736f6bc2c900dec4e91b1b9169c77/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_da1c4a1de43d19b7019330f738e08c4f448f9f91/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/5a46361196c5cf26b31983d0bc1147e576b0f5f9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_878a31d414055a61b1e946327c8af0f8c81bc0a1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/d9f2ea39ad5c14aa3629ec09fc5b53f74c0009b3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9974da29516554759396fc03f4309ea56f1dce02/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a11b502b24f25506836d42806ccb59297069cae0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/83807e03870fbba7cd7abbf3eb1da607125ce199/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8c440b368d3413c3d3b576ae688fd6e7003ae0cc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/a8ae5d6b112d8a33232a752ecf1c429f23e0228c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2f76f6cce90998d826a5457b4f8900ffb3dc2fba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/308229402280381e1f74eeea98a29cd12f294708/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b1508e53f85e9eb1f76c22d283bd7e12b61818ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/ac91fce5fb346b7b763e4b611e51df81f1371131/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5828dee1380136c0d27bf5e6aee0710bc4115b8c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/opt/android-sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.0.0-alpha1_b2129bdf4d4171d25a813cb6d15ada9727bdcf15/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bee7ea5efd4e7d67d12c1bac9302e45d89f3642f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2a8694c93288e408199edfb6abd2fc100fd94f4d">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ca341c81877c118e34903a749e49a86ccbc1ae06/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/dbe451e76891223485b93a617eea2dffee2e3667/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7da652f1e977c7ccf7dc2208e392ea0f8be315b1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/var/cache/fscache/home/student1/emdogan/.android/build-cache/e9b90d3e1cd78e2b5e88130a514743481708b5d9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_748a3394d90517ce4a10912681484a36fdf9a9b1/classes.dex" />
+    </item>
+
+</items>
