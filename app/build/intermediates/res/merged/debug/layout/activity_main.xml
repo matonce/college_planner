@@ -1,97 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
+    android:id="@+id/relativeLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="emdogan.projekt.MainActivity"
-    android:orientation="vertical"
-    android:weightSum="1">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
+    <ScrollView
+        android:id="@+id/sw_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/icons_container"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.03"
-        android:text="Unesite ime predmeta" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context="emdogan.projekt.MainActivity"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_weight="0.05" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.03"
+                android:text="@string/unesi_ime_predmeta" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:onClick="DodajPredmet"
-        android:text="Dodaj predmet" />
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:layout_weight="0.05" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:onClick="IspisiPredmete"
-        android:text="Ispisi sve predmete" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:onClick="DodajPredmet"
+                android:text="@string/dodaj_predmet" />
 
-    <!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:onClick="IspisiPredmete"
+                android:text="@string/ispisi_sve_predmete" />
 
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.01"
-            android:scaleType="fitStart"
-            app:srcCompat="@android:drawable/ic_menu_today" />
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.03"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.01"
-            android:scaleType="fitStart"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.03"
+                android:onClick="dodaj"
+                android:text="Button" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.01"
-            android:scaleType="fitStart"
-            app:srcCompat="@android:drawable/ic_dialog_info" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="@string/tvoja_to_do_lista" />
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.12"
-            android:scaleType="fitStart"
-            app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
-    </LinearLayout>
-    -->
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/icons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         tools:context=".MainActivity"
-        android:background="#666666">
+        android:background="#dadada">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="#666666"
+            android:background="#dadada"
             android:text="@string/fa_home"
             android:textColor="#6e0f94"
             android:textSize="45sp" />
@@ -101,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="#666666"
+            android:background="#dadada"
             android:text="@string/fa_calendar"
             android:textColor="#6e0f94"
             android:textSize="45sp" />
@@ -111,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="#666666"
+            android:background="#dadada"
             android:text="@string/fa_chart_bar"
             android:textColor="#6e0f94"
             android:textSize="45sp" />
@@ -121,11 +126,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:background="#666666"
+            android:background="#dadada"
             android:text="@string/fa_clock"
             android:textColor="#6e0f94"
             android:textSize="45sp" />
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

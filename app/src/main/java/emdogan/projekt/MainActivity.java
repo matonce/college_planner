@@ -1,17 +1,23 @@
 package emdogan.projekt;
 
+import android.app.ListActivity;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import static emdogan.projekt.R.id.editText;
 
@@ -19,54 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
     DBAdapter db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db =  new DBAdapter(this);
 
+        //za font awesome
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.icons_container), iconFont);
 
-        //Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
-        //TextView tv1 = (TextView) findViewById(R.id.textView2); 
-       // tv1.setTypeface(iconFont);
-/*
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        //int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
-        Toast.makeText(this, width, Toast.LENGTH_LONG).show();
-
-        RelativeLayout.LayoutParams layoutparams;
-
-        ImageButton im = (ImageButton) findViewById(R.id.imageButton1);
-        layoutparams = (RelativeLayout.LayoutParams) im.getLayoutParams();
-        layoutparams.height = 70;
-        layoutparams.width = width/4;
-        im.setLayoutParams(layoutparams);
-        im.setScaleType(ImageView.ScaleType.FIT_XY);
-
-        im = (ImageButton) findViewById(R.id.imageButton2);
-        layoutparams = (RelativeLayout.LayoutParams) im.getLayoutParams();
-        layoutparams.height = 70;
-        layoutparams.width = width/4;
-        im.setLayoutParams(layoutparams);
-        im.setScaleType(ImageView.ScaleType.FIT_XY);
-
-        im = (ImageButton) findViewById(R.id.imageButton3);
-        layoutparams = (RelativeLayout.LayoutParams) im.getLayoutParams();
-        layoutparams.height = 70;
-        layoutparams.width = width/4;
-        im.setLayoutParams(layoutparams);
-        im.setScaleType(ImageView.ScaleType.FIT_XY);
-
-        im = (ImageButton) findViewById(R.id.imageButton4);
-        layoutparams = (RelativeLayout.LayoutParams) im.getLayoutParams();
-        layoutparams.height = 70;
-        layoutparams.width = width/4;
-        im.setLayoutParams(layoutparams);
-        im.setScaleType(ImageView.ScaleType.FIT_XY);*/
     }
 
     public void DodajPredmet(View view) {
@@ -112,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
         db.open();
         Cursor c = db.getAllSubjects();
         //dohvati sve predmete
-        db.open();
         if (c.moveToFirst())
         {
             do {
                 DisplaySubject(c);
+
             } while (c.moveToNext());
         }
         db.close();
@@ -129,6 +98,4 @@ public class MainActivity extends AppCompatActivity {
                         "Name: " + c.getString(1) + "\n",
                 Toast.LENGTH_LONG).show();
     }
-
-
 }

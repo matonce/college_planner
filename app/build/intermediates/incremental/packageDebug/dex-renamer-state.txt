@@ -1,4 +1,4 @@
-#Fri Feb 08 14:23:17 CET 2019
+#Fri Feb 08 16:23:28 CET 2019
 base.0=/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_254f7a7f9411089bef969e23e235ec5939347187
 renamed.1=classes2.dex
 renamed.0=classes.dex

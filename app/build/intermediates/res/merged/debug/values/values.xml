@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="kolegiji">
+        <item>Baze podataka</item>
+        <item>Racunarski praktikum</item>
+        <item>Mreze racunala</item>
+        <item>SPA</item>
+        <item>Programiranje</item>
+    </string-array>
     <attr format="reference" name="constraintSet"/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -440,6 +447,7 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="app_name">Projekt</string>
+    <string name="dodaj_predmet">Dodaj predmet</string>
     <string name="fa_bell"></string>
     <string name="fa_bell_slash"></string>
     <string name="fa_calendar"></string>
@@ -452,8 +460,11 @@
     <string name="fa_icon_linechart"></string>
     <string name="fa_list_ul"></string>
     <string name="fa_stopwatch"></string>
+    <string name="ispisi_sve_predmete">Ispisi sve predmete</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="tvoja_to_do_lista">Tvoja današnja TO DO lista</string>
+    <string name="unesi_ime_predmeta">Unesi ime predmeta</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
