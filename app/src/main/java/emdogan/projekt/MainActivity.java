@@ -98,4 +98,43 @@ public class MainActivity extends AppCompatActivity {
                         "Name: " + c.getString(1) + "\n",
                 Toast.LENGTH_LONG).show();
     }
+    
+    
+    / OPTIONS MENU
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        CreateMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        return MenuChoice(item);
+    }
+
+    private void CreateMenu(Menu menu)
+    {
+        menu.setQwertyMode(true);
+        MenuItem mnu1 = menu.add(0, 0, 0, "Pomadoro timer");
+        {
+            mnu1.setAlphabeticShortcut('T');
+            mnu1.setIcon(R.mipmap.ic_launcher);
+        }
+    }
+
+
+    private boolean MenuChoice(MenuItem item)
+    {
+        switch (item.getItemId()) {
+            case 0:
+                Intent intent = new Intent(this, Timer.class);
+                startActivity(intent);
+                Toast.makeText(this, "Odabran je timer",
+                        Toast.LENGTH_LONG).show();
+                return true;
+        }
+        return false;
+    }
 }
