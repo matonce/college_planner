@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".Timer">
+
+
+    <TableLayout
+        android:id="@+id/tablica"
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp">
+        <!-- BROJ INTERVALA -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duljina intervala učenja"
+                tools:layout_editor_absoluteX="101dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <EditText
+                android:id="@+id/duljinaIntervalaMin"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="2"
+                android:text="00" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                tools:layout_editor_absoluteX="101dp"
+                tools:layout_editor_absoluteY="16dp" />
+            <EditText
+                android:id="@+id/duljinaIntervalaSec"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="2"
+                android:text="30" />
+        </TableRow>
+
+        <!-- DULJINA PAUZE -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duljina pauze"
+                tools:layout_editor_absoluteX="101dp"
+                tools:layout_editor_absoluteY="45dp" />
+
+            <EditText
+                android:id="@+id/duljinaPauzeMin"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="2"
+                android:text="00" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                tools:layout_editor_absoluteX="101dp"
+                tools:layout_editor_absoluteY="16dp" />
+            <EditText
+                android:id="@+id/duljinaPauzeSec"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="2"
+                android:text="05" />
+
+        </TableRow>
+
+        <!-- BROJ INTERVALA  -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Broj intervala učenja"
+                tools:layout_editor_absoluteX="101dp"
+                tools:layout_editor_absoluteY="45dp" />
+
+            <EditText
+                android:id="@+id/brojIntervala"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="1"
+                android:text="4" />
+        </TableRow>
+        <!-- GUMBOVI  -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/startTimer"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="pokreniTimer"
+                android:text="Start"
+                android:textAlignment="center"/>
+
+            <Button
+                android:id="@+id/stopTimer"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:onClick="zaustaviTimer"
+                android:text="Stop"
+                android:textAlignment="center"/>
+        </TableRow>
+    </TableLayout>
+
+
+    <!-- BROJAČ -->
+    <!-- android:layout_below="@+id/tablica" -->
+    <!-- android:layout_centerHorizontal="true" -->
+    <TextView
+        android:layout_below="@+id/tablica"
+        android:id="@+id/timerTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:text=""/>
+    <TextView
+        android:layout_below="@+id/timerTextView"
+        android:id="@+id/kojiInterval"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+
+</RelativeLayout>
