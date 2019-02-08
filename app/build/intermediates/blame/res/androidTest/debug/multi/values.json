@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/48cc55bb997d0f9d006d323140fc8b6ae377338c/output/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 45,
+                        "endOffset": 270
+                    }
+                }
+            }
+        ]
+    }
+]
