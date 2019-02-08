@@ -1,82 +1,82 @@
 [
     {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_disable_only_material_light.xml"
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/switch_thumb_material_light.xml"
     },
     {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_material_light.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_material_dark.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_secondary_text_material_light.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_switch_track.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_secondary_text_material_dark.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_spinner.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_switch_thumb.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_hint_foreground_material_dark.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/switch_thumb_material_dark.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_btn_checkable.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_default.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_search_url_text.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_btn_colored_text_material.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_disable_only_material_dark.xml"
-    },
-    {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
         "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_edittext.xml"
     },
     {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_default.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
         "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
-        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/switch_thumb_material_light.xml"
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/var/cache/fscache/home/student1/emdogan/.android/build-cache/01e4d9a2f376d8d6a8dfbe768b46dfd481df9732/output/res/color/abc_secondary_text_material_dark.xml"
     }
 ]

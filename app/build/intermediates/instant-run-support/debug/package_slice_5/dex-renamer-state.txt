@@ -1,4 +1,4 @@
-#Fri Feb 08 11:05:33 CET 2019
-base.0=/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5
+#Fri Feb 08 13:46:37 CET 2019
+base.0=/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5
 renamed.0=classes.dex
-file.0=/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex
+file.0=/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex

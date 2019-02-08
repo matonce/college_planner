@@ -1,6 +1,7 @@
 package emdogan.projekt;
 
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static emdogan.projekt.R.id.editText;
@@ -23,12 +25,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         db =  new DBAdapter(this);
 
+        Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+        FontManager.markAsIconContainer(findViewById(R.id.icons_container), iconFont);
+
+        //Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+        //TextView tv1 = (TextView) findViewById(R.id.textView2); 
+       // tv1.setTypeface(iconFont);
+/*
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         //int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
         Toast.makeText(this, width, Toast.LENGTH_LONG).show();
-/*
+
         RelativeLayout.LayoutParams layoutparams;
 
         ImageButton im = (ImageButton) findViewById(R.id.imageButton1);

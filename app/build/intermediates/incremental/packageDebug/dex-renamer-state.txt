@@ -1,7 +1,7 @@
-#Fri Feb 08 12:01:13 CET 2019
-base.0=/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ca341c81877c118e34903a749e49a86ccbc1ae06
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a11b502b24f25506836d42806ccb59297069cae0/classes.dex
-base.1=/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a11b502b24f25506836d42806ccb59297069cae0
-file.0=/var/cache/fscache/home/student1/emdogan/AndroidStudioProjects/Projekt/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ca341c81877c118e34903a749e49a86ccbc1ae06/classes.dex
+#Fri Feb 08 14:23:17 CET 2019
+base.0=/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_254f7a7f9411089bef969e23e235ec5939347187
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_699b1abaf33eb7761594e26004251ebf89ab1b33/classes.dex
+base.1=/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_699b1abaf33eb7761594e26004251ebf89ab1b33
+file.0=/.home/student1/emdogan/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_254f7a7f9411089bef969e23e235ec5939347187/classes.dex

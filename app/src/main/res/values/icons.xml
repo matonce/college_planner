@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- za font awesome - stopwatch trenutno ne radi-->
+    <string name="fa_calendar">&#xf073;</string>
+    <string name="fa_stopwatch">&#xf2f2;</string>
+    <string name="fa_clock">&#xf017;</string>
+    <string name="fa_bell">&#xf0f3;</string>
+    <string name="fa_bell_slash">&#xf1f6;</string>
+    <string name="fa_chart_bar">&#xf080;</string>
+    <string name="fa_chart_area">&#xf1fe;</string>
+    <string name="fa_cog">&#xf013;</string>
+    <string name="fa_edit">&#xf044;</string>
+    <string name="fa_home">&#xf015;</string>
+    <string name="fa_list_ul">&#xf0ca;</string>
+
+    <string name="fa_icon_linechart">&#xf201;</string>
+</resources>
