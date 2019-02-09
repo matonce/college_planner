@@ -113,7 +113,8 @@
             android:background="#dadada"
             android:text="@string/fa_clock"
             android:textColor="#6e0f94"
-            android:textSize="45sp" />
+            android:textSize="45sp" 
+            android:onClick="openTimer"/>
 
     </LinearLayout>
 
