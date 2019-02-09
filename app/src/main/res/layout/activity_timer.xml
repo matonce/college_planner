@@ -170,6 +170,83 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""/>
+    
+    
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_below="@id/kojiInterval"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal" />
+
+
+
+
+    <!-- GUMBICI -->
+    <LinearLayout
+        android:id="@+id/icons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        tools:context=".MainActivity"
+        android:background="#dadada">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#dadada"
+            android:text="@string/fa_home"
+            android:textColor="#6e0f94"
+            android:textSize="45sp"
+            android:onClick="openHome"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#dadada"
+            android:text="@string/fa_calendar"
+            android:textColor="#6e0f94"
+            android:textSize="45sp" />
+
+        <Button
+            android:id="@+id/timetableButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#dadada"
+            android:textColor="#6e0f94"
+            android:textSize="45sp"
+            android:onClick="openTimetable" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#dadada"
+            android:text="@string/fa_chart_bar"
+            android:textColor="#6e0f94"
+            android:textSize="45sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#dadada"
+            android:text="@string/fa_clock"
+            android:textColor="#6e0f94"
+            android:textSize="45sp"/>
+
+    </LinearLayout>
 
 
 </RelativeLayout>
