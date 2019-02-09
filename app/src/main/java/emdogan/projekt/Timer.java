@@ -1,8 +1,10 @@
 package emdogan.projekt;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -11,8 +13,10 @@ import android.text.method.KeyListener;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +27,7 @@ import java.util.regex.Pattern;
 
 public class Timer extends AppCompatActivity {
 
+    // odbrojavanje
     CountDownTimer ucenjeTimer;
     CountDownTimer pauzaTimer;
 
@@ -35,6 +40,13 @@ public class Timer extends AppCompatActivity {
 
 
 
+    // progress bar
+    static int progress;
+    ProgressBar progressBar;
+    int progressStatus = 0;
+    int progressInterval;
+    int progressPauza;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +54,10 @@ public class Timer extends AppCompatActivity {
         setContentView(R.layout.activity_timer);
 
         ((Button) findViewById(R.id.stopTimer)).setClickable(false);    // ovo sam morala dodati jer mi nije htjelo otpocetka blokirati Stop gumb
+
+        progress = 0;
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        progressBar.setMax(100);
     }
 
 
@@ -147,6 +163,10 @@ public class Timer extends AppCompatActivity {
 
                 ((TextView) findViewById(R.id.kojiInterval)).setText("UČENJE. Trenutni interval: " + trenutniInterval + "/" + brojIntervala);
                 trenutnoUcenje = true;
+
+                progressInterval = 100/duljinaIntervala;
+                progressPauza = 100/duljinaPauze;
+
                 pokreniUcenjeTimer();
             }
 
@@ -157,7 +177,14 @@ public class Timer extends AppCompatActivity {
 
 
     public void pokreniPauzaTimer() {
-        pauzaTimer = new CountDownTimer(duljinaPauze*1000, 1000) {
+
+        // progessbar
+        progress = 0;
+        progressBar.setProgress(0);
+
+
+        // odbrojavanje
+        pauzaTimer = new CountDownTimer(duljinaPauze*1000+1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 int minuta = (int) ((millisUntilFinished / 1000) / 60);
@@ -170,28 +197,40 @@ public class Timer extends AppCompatActivity {
 
                 String sec = "";
                 if (sekunda < 10)
-                    sec = "0" + sekunda;
+                    sec = "0" + (sekunda);
                 else
                     sec = Integer.toString(sekunda);
 
 
 
                 ((TextView) findViewById(R.id.timerTextView)).setText("PAUZA: " + min + ":" + sec);
+
+                progressBar.setProgress(progress + progressPauza);
+                progress += progressPauza;
             }
 
             public void onFinish() {
                 trenutniInterval++;
                 ((TextView) findViewById(R.id.kojiInterval)).setText("Trenutni interval: " + trenutniInterval +"/" + brojIntervala);
                 trenutnoUcenje = true;
+                progressBar.setProgress(progress + progressPauza);
                 pokreniUcenjeTimer();
             }
         }.start();
     }
 
     public void pokreniUcenjeTimer (){
-        ucenjeTimer = new CountDownTimer(duljinaIntervala*1000, 1000) {
+
+        // progress bar
+        progress = 0;
+        progressBar.setProgress(0);
+
+
+        // odbrojavanje
+        ucenjeTimer = new CountDownTimer(duljinaIntervala*1000+1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
+
                 int minuta = (int) ((millisUntilFinished / 1000) / 60);
                 int sekunda = (int)((millisUntilFinished / 1000) - minuta*60) ;
 
@@ -203,20 +242,27 @@ public class Timer extends AppCompatActivity {
 
                 String sec = "";
                 if (sekunda < 10)
-                    sec = "0" + sekunda;
+                    sec = "0" + (sekunda);
                 else
                     sec = Integer.toString(sekunda);
 
                 ((TextView) findViewById(R.id.timerTextView)).setText("UČENJE: " + min + ":" + sec);
 
+                progressBar.setProgress(progress + progressInterval);
+                progress += progressInterval;
+
             }
 
             public void onFinish() {
-                if (trenutniInterval == brojIntervala)
+                if (trenutniInterval == brojIntervala) {
                     ((TextView) findViewById(R.id.timerTextView)).setText("ODBROJAVANJE JE ZAVRŠENO");
+                    resetiraj();
+                }
                 else {
+
                     ((TextView) findViewById(R.id.kojiInterval)).setText("Odrađeno je: " + trenutniInterval +"/" + brojIntervala + " intervala.");
                     trenutnoUcenje = false;
+                    progressBar.setProgress(progress + progressInterval);
                     pokreniPauzaTimer();
                 }
             }
@@ -248,7 +294,42 @@ public class Timer extends AppCompatActivity {
         mTextField.setText("");
         kojiInterval.setText("");
 
-        Toast.makeText(this, "Zaustavljen timer", Toast.LENGTH_SHORT).show();
+        progress = 0;
+        progressBar.setProgress(0);
+    }
+
+    public void resetiraj(){
+        if (trenutnoUcenje)
+            ucenjeTimer.cancel();
+        else
+            pauzaTimer.cancel();
+
+
+        ((Button) findViewById(R.id.startTimer)).setClickable(true);
+        ((Button) findViewById(R.id.stopTimer)).setClickable(false);
+
+        ((EditText) findViewById(R.id.duljinaPauzeMin)).setFocusableInTouchMode(true);
+        ((EditText) findViewById(R.id.duljinaPauzeSec)).setFocusableInTouchMode(true);
+        ((EditText) findViewById(R.id.duljinaIntervalaMin)).setFocusableInTouchMode(true);
+        ((EditText) findViewById(R.id.duljinaIntervalaSec)).setFocusableInTouchMode(true);
+        ((EditText) findViewById(R.id.brojIntervala)).setFocusableInTouchMode(true);
+
+        ((TextView) findViewById(R.id.kojiInterval)).setText("");
+
+        progress = 0;
+        progressBar.setProgress(0);
+    }
+
+
+
+    // ZA IKONICE DOLJE
+    public void openTimetable(View view) {
+        Intent intent = new Intent(this, TimetableActivity.class);
+        startActivity(intent);
+    }
+    public void openHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
