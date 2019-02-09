@@ -26,14 +26,13 @@ public class TimetableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
 
-        setContentView(R.layout.activity_timetable);
         db = new DBAdapter(this);
 
-        ((TextView) findViewById(R.id.textView1_1)).setOnCreateContextMenuListener(this);
-        ((TextView) findViewById(R.id.textView1_2)).setOnCreateContextMenuListener(this);
-        ((TextView) findViewById(R.id.textView1_3)).setOnCreateContextMenuListener(this);
-        ((TextView) findViewById(R.id.textView1_4)).setOnCreateContextMenuListener(this);
-        ((TextView) findViewById(R.id.textView1_5)).setOnCreateContextMenuListener(this);
+        TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayoutId);
+
+        for(int i = 1; i < 13; ++i)
+            for (int j = 1; j < 6; ++j)
+                ((TableRow)tableLayout.getChildAt(i)).getChildAt(j).setOnCreateContextMenuListener(this);
 
         //PrikažiCijeliRaspored();
     }
@@ -49,11 +48,7 @@ public class TimetableActivity extends AppCompatActivity {
         // Toast.makeText(this, String.valueOf(columnId) + " " + String.valueOf(rowId), Toast.LENGTH_SHORT).show();
 
         super.onCreateContextMenu(menu, view, menuInfo);
-
-        if (columnId >= 1 && columnId <= 5 && rowId >= 1)
-        {
-            CreateMenu(menu);
-        }
+        CreateMenu(menu);
     }
 
 
@@ -77,10 +72,6 @@ public class TimetableActivity extends AppCompatActivity {
         for (String s : stringList)
         {
             MenuItem mnu = menu.add(0, 0, 0, s);
-            {
-                //mnu.setAlphabeticShortcut('a');
-                //mnu.setIcon(R.mipmap.ic_launcher);
-            }
         }
     }
 
@@ -99,7 +90,6 @@ public class TimetableActivity extends AppCompatActivity {
         return stringList;
     }
 
-    //druga pomocna fukcija
     private boolean MenuChoice(MenuItem item)
     {
         db.open();
