@@ -145,4 +145,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, TimetableActivity.class);
         startActivity(intent);
     }
+    
+    
+    public void openTimer (View view){
+        Intent intent = new Intent(this, Timer.class);
+        startActivity(intent);
+    }
+
 }
