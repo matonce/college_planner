@@ -140,4 +140,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
+    public void OpenTimetable(View view) {
+        Intent intent = new Intent(MainActivity.this, TimetableActivity.class);
+        startActivity(intent);
+    }
 }
