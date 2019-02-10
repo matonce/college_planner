@@ -78,7 +78,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:text="@string/fa_trash"
+                android:textColor="#6e0f94"
+                android:onClick="onClickDeleteTimetable" />
         </TableRow>
 
         <TableRow
@@ -809,7 +812,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            tools:context=".MainActivity"
+            tools:context=".TimetableActivity"
             android:background="#dadada">
 
             <Button
@@ -820,7 +823,8 @@
                 android:background="#dadada"
                 android:text="@string/fa_home"
                 android:textColor="#6e0f94"
-                android:textSize="45sp" />
+                android:textSize="45sp"
+                android:onClick="openHome" />
 
             <Button
                 android:layout_width="match_parent"
@@ -839,6 +843,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="#dadada"
+                android:text="@string/fa_timetable"
                 android:textColor="#6e0f94"
                 android:textSize="45sp" />
 
@@ -860,6 +865,7 @@
                 android:background="#dadada"
                 android:text="@string/fa_clock"
                 android:textColor="#6e0f94"
-                android:textSize="45sp" />
+                android:textSize="45sp"
+                android:onClick="openTimer" />
         </LinearLayout>
 </LinearLayout>

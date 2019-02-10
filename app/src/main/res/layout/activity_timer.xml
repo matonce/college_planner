@@ -216,12 +216,12 @@
             android:textSize="45sp" />
 
         <Button
-            android:id="@+id/timetableButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:background="#dadada"
+            android:text="@string/fa_timetable"
             android:textColor="#6e0f94"
             android:textSize="45sp"
             android:onClick="openTimetable" />
@@ -237,6 +237,7 @@
             android:textSize="45sp" />
 
         <Button
+            android:id="@+id/timerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

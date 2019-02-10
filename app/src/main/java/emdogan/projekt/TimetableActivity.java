@@ -1,12 +1,18 @@
 package emdogan.projekt;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -26,6 +32,9 @@ public class TimetableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
 
+        Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+        FontManager.markAsIconContainer(findViewById(R.id.icons_container), iconFont);
+
         db = new DBAdapter(this);
 
         TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
@@ -35,6 +44,9 @@ public class TimetableActivity extends AppCompatActivity {
                 ((TableRow)tableLayout.getChildAt(i)).getChildAt(j).setOnCreateContextMenuListener(this);
 
         ShowTimetable();
+
+        Button button = (Button)findViewById(R.id.timetableButton);
+        button.setTextColor(Color.parseColor("#c98300"));
     }
 
     @Override
@@ -158,4 +170,57 @@ public class TimetableActivity extends AppCompatActivity {
     }
 
 
+    public void onClickDeleteTimetable(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(TimetableActivity.this).create();
+        alertDialog.setMessage("Delete all entries?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteAllTimetableEntries();
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+
+
+    public void deleteAllTimetableEntries() {
+        db.open();
+        Cursor c = db.getAllTimetableEntries();
+
+        TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
+
+        if (c.moveToFirst())
+        {
+            do {
+                db.deleteTimetableEntry(c.getInt(2)-7, c.getInt(1));
+
+                TextView textView = (TextView)(((TableRow)tableLayout.getChildAt(c.getInt(2)-7)).getChildAt(c.getInt(1)));
+                textView.setText("");
+
+            } while (c.moveToNext());
+        }
+        db.close();
+    }
+
+    public void openTimer(View view) {
+        Intent intent = new Intent(this, Timer.class);
+        startActivity(intent);
+    }
+
+    public void openHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void changeColorOfButton(View view) {
+        Button button = (Button)findViewById(R.id.timetableButton);
+        button.setTextColor(Color.parseColor("#6e0f94"));
+    }
 }

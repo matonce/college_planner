@@ -3,6 +3,7 @@ package emdogan.projekt;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import static emdogan.projekt.R.id.editText;
+import static emdogan.projekt.R.id.homeButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,12 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         db =  new DBAdapter(this);
 
         //za font awesome
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.icons_container), iconFont);
 
+        Button button = (Button)findViewById(R.id.homeButton);
+        button.setTextColor(Color.parseColor("#c98300"));
     }
 
     public void DodajPredmet(View view) {
@@ -152,4 +158,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void changeColorOfButton(View view) {
+        Button button = (Button)findViewById(R.id.homeButton);
+        button.setTextColor(Color.parseColor("#6e0f94"));
+    }
 }

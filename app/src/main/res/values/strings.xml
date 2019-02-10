@@ -4,4 +4,7 @@
     <string name="ispisi_sve_predmete">Ispisi sve predmete</string>
     <string name="dodaj_predmet">Dodaj predmet</string>
     <string name="unesi_ime_predmeta">Unesi ime predmeta</string>
+    <string name="raspored">Raspored</string>
+    <string name="home">Home</string>
+    <string name="timer">Timer</string>
 </resources>

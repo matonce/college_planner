@@ -3,6 +3,8 @@ package emdogan.projekt;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -53,11 +55,17 @@ public class Timer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
+        Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+        FontManager.markAsIconContainer(findViewById(R.id.icons_container), iconFont);
+
         ((Button) findViewById(R.id.stopTimer)).setClickable(false);    // ovo sam morala dodati jer mi nije htjelo otpocetka blokirati Stop gumb
 
         progress = 0;
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         progressBar.setMax(100);
+
+        Button button = (Button)findViewById(R.id.timerButton);
+        button.setTextColor(Color.parseColor("#c98300"));
     }
 
 
@@ -330,6 +338,11 @@ public class Timer extends AppCompatActivity {
     public void openHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void changeColorOfButton(View view) {
+        Button button = (Button)findViewById(R.id.timerButton);
+        button.setTextColor(Color.parseColor("#6e0f94"));
     }
 
 }
