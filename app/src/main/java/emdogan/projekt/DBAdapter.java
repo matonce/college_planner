@@ -31,16 +31,16 @@ public class DBAdapter {
 
 
     static final String KEY_ROWID2 = "_id";
-    static final String KEY_NAME2 = "idPredmeta";
+    static final String KEY_SUBJECTID = "idPredmeta";
     static final String KEY_DAY = "day";
-    static final String KEY_FROM = "from";
-    static final String KEY_TO = "to";
+    static final String KEY_FROM = "fromm";
+    static final String KEY_TO = "too";
     static final String DATABASE_CREATE2 =
             "create table raspored (_id integer primary key autoincrement, "
-                    + "idPredmeta integer, "
-                    + "dan integer,"
-                    + "od integer,"
-                    + "do integer);";
+                    + "idPredmeta integer not null, "
+                    + "day integer not null,"
+                    + "fromm integer not null,"
+                    + "too integer not null);";
 
     final Context context;
 
@@ -138,17 +138,26 @@ public class DBAdapter {
     }
 
 
-    public long UnesiURaspored(String nazivPredmeta, int otkad, int dokad, int danUTjednu) {
+    public long insertInTimetable(String nazivPredmeta, int day, int from, int to) {
         /*initialValues = ContentValues().apply {
             put(FeedEntry.COLUMN_NAME_TITLE, title)
             put(FeedEntry.COLUMN_NAME_SUBTITLE, subtitle)
         }*/
 
         ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_NAME2, nazivPredmeta);
-        initialValues.put(KEY_DAY, danUTjednu);
-        initialValues.put(KEY_FROM, otkad);
-        initialValues.put(KEY_TO, dokad);
+
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID}, KEY_NAME + "='" + nazivPredmeta+"'", null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        else throw new IllegalArgumentException("blaaa");
+
+        initialValues.put(KEY_SUBJECTID, mCursor.getInt(0));
+        initialValues.put(KEY_DAY, day);
+        initialValues.put(KEY_FROM, from);
+        initialValues.put(KEY_TO, to);
 
         // Toast.makeText(context, "jaas", Toast.LENGTH_SHORT).show();
 
@@ -157,7 +166,7 @@ public class DBAdapter {
 
     public Cursor getAllTimetableEntries()
     {
-        return db.query(DATABASE_TABLE2, new String[] {KEY_NAME2, KEY_DAY, KEY_FROM, KEY_TO
+        return db.query(DATABASE_TABLE2, new String[] {KEY_SUBJECTID, KEY_DAY, KEY_FROM, KEY_TO
         }, null, null, null, null, null);
     }
 }

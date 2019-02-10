@@ -7,7 +7,6 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -34,7 +33,7 @@ public class TimetableActivity extends AppCompatActivity {
             for (int j = 1; j < 6; ++j)
                 ((TableRow)tableLayout.getChildAt(i)).getChildAt(j).setOnCreateContextMenuListener(this);
 
-        //PrikažiCijeliRaspored();
+        ShowTimetable();
     }
 
     @Override
@@ -67,8 +66,6 @@ public class TimetableActivity extends AppCompatActivity {
 
         List<String> stringList = DohvatiPredmete();
 
-        //Toast.makeText(this, String.valueOf(view.getId()), Toast.LENGTH_SHORT).show();
-
         for (String s : stringList)
         {
             MenuItem mnu = menu.add(0, 0, 0, s);
@@ -95,24 +92,24 @@ public class TimetableActivity extends AppCompatActivity {
         db.open();
         // ovdje mozda napraviti ako se je kliknulo na isti da se nista ne dogada, a inace promijeni
 
-        db.UnesiURaspored(item.getTitle().toString(),rowId+7,rowId+8,columnId);
+        db.insertInTimetable(item.getTitle().toString(),columnId,rowId+7,rowId+8);
 
-        OsvježiRaspored(item.getTitle().toString(),rowId,rowId,columnId);
+        ShowTimetableEntry(item.getTitle().toString(),columnId,rowId,rowId);
 
         db.close();
         return true;
     }
 
-    public void OsvježiRaspored(String nazivPredmeta, int otkad, int dokad, int danUTjednu)
+    public void ShowTimetableEntry(String nazivPredmeta, int day, int from, int to)
     {
         TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
 
-        TextView textView = (TextView)((TableRow)tableLayout.getChildAt(otkad)).getChildAt(danUTjednu);
+        TextView textView = (TextView)((TableRow)tableLayout.getChildAt(from)).getChildAt(day);
 
         textView.setText(nazivPredmeta);
     }
 
-    public void PrikažiCijeliRaspored()
+    public void ShowTimetable()
     {
         db.open();
         Cursor c = db.getAllTimetableEntries();
@@ -120,7 +117,9 @@ public class TimetableActivity extends AppCompatActivity {
         if (c.moveToFirst())
         {
             do {
-                OsvježiRaspored(c.getString(0),Integer.parseInt(c.getString(1)),Integer.parseInt(c.getString(2)),Integer.parseInt(c.getString(3)));
+                Cursor subject = db.getSubject(c.getInt(0));
+                subject.moveToFirst();
+                ShowTimetableEntry(subject.getString(1),Integer.parseInt(c.getString(1)),Integer.parseInt(c.getString(2))-7,Integer.parseInt(c.getString(3))-8);
             } while (c.moveToNext());
         }
         db.close();
