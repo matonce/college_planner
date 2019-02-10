@@ -168,7 +168,7 @@ public class DBAdapter {
     {
         Cursor mCursor =
                 db.query(true, DATABASE_TABLE2, new String[] {
-                                KEY_SUBJECTID, KEY_DAY, KEY_TIME}, KEY_DAY + "=" + columnId + " AND " + KEY_TIME + "=" + rowId+7, null,
+                                KEY_SUBJECTID, KEY_DAY, KEY_TIME}, KEY_DAY + "=" + columnId + " AND " + KEY_TIME + "=" + (rowId+7), null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -177,6 +177,6 @@ public class DBAdapter {
     }
 
     public boolean deleteTimetableEntry(int rowId, int columnId) {
-        return db.delete(DATABASE_TABLE2, KEY_TIME + "=" + rowId+7 + " AND " + KEY_DAY + "=" + columnId , null) > 0;
+        return db.delete(DATABASE_TABLE2, KEY_TIME + "=" + (rowId+7) + " AND " + KEY_DAY + "=" + columnId , null) > 0;
     }
 }

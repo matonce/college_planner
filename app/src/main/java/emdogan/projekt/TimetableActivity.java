@@ -69,18 +69,9 @@ public class TimetableActivity extends AppCompatActivity {
     private boolean DeleteTimetableEntry()
     {
         db.open();
-        Toast.makeText(this,String.valueOf(rowId) + " " + String.valueOf(columnId) , Toast.LENGTH_SHORT).show();
 
-        Cursor c = db.getEntry(rowId, columnId);
-
-        Toast.makeText(this, c.toString(), Toast.LENGTH_SHORT).show();
-/*
-        if (c == null)
-            Toast.makeText(this, "prazno", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, c.getString(0)+" "+c.getInt(1)+" "+c.getInt(2), Toast.LENGTH_SHORT).show();
-*/
         boolean res =  db.deleteTimetableEntry(rowId, columnId);
+
         db.close();
 
         TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
@@ -159,8 +150,8 @@ public class TimetableActivity extends AppCompatActivity {
             do {
                 Cursor subject = db.getSubject(c.getInt(0));
                 subject.moveToFirst();
-                Toast.makeText(this, subject.getString(1) + " " + c.getString(1) + " " + String.valueOf(c.getInt(2)-7), Toast.LENGTH_SHORT).show();
-                ShowTimetableEntry(subject.getString(1),Integer.parseInt(c.getString(1)),Integer.parseInt(c.getString(2))-7);
+                // Toast.makeText(this, "ime: " + subject.getString(1) + ", dan: " + c.getString(1) + ", sat: " + String.valueOf(c.getInt(2)-7), Toast.LENGTH_SHORT).show();
+                ShowTimetableEntry(subject.getString(1), c.getInt(1),c.getInt(2)-7);
             } while (c.moveToNext());
         }
         db.close();
