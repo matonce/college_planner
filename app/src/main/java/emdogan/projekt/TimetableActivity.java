@@ -19,6 +19,7 @@ public class TimetableActivity extends AppCompatActivity {
     DBAdapter db;
     int rowId;
     int columnId;
+    final String delete = "Delete?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class TimetableActivity extends AppCompatActivity {
 
         db = new DBAdapter(this);
 
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayoutId);
+        TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
 
         for(int i = 1; i < 13; ++i)
             for (int j = 1; j < 6; ++j)
@@ -39,40 +40,79 @@ public class TimetableActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view,
                                     ContextMenu.ContextMenuInfo menuInfo) {
-        // inicijaliziram id-jeve - samo ako je kliknuto na ona valjana polja daj mogućnost unosa termina
+
+        TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
 
         columnId = ((TableRow) view.getParent()).indexOfChild(view);
         rowId = ((TableLayout) view.getParent().getParent()).indexOfChild((TableRow) view.getParent());
-
         // Toast.makeText(this, String.valueOf(columnId) + " " + String.valueOf(rowId), Toast.LENGTH_SHORT).show();
 
         super.onCreateContextMenu(menu, view, menuInfo);
-        CreateMenu(menu);
+
+        TextView textView = (TextView) view;
+
+        if (textView.getText() == "")
+            CreateMenu1(menu);
+        else
+            CreateMenu2(menu);
     }
 
 
     @Override
     public boolean onContextItemSelected(MenuItem item)
     {
+        if (item.getTitle() == delete)
+            return DeleteTimetableEntry();
         return MenuChoice(item);
     }
 
+    private boolean DeleteTimetableEntry()
+    {
+        db.open();
+        Toast.makeText(this,String.valueOf(rowId) + " " + String.valueOf(columnId) , Toast.LENGTH_SHORT).show();
 
-    private void CreateMenu(Menu menu)
+        Cursor c = db.getEntry(rowId, columnId);
+
+        Toast.makeText(this, c.toString(), Toast.LENGTH_SHORT).show();
+/*
+        if (c == null)
+            Toast.makeText(this, "prazno", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, c.getString(0)+" "+c.getInt(1)+" "+c.getInt(2), Toast.LENGTH_SHORT).show();
+*/
+        boolean res =  db.deleteTimetableEntry(rowId, columnId);
+        db.close();
+
+        TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
+
+        TextView textView = (TextView)(((TableRow)tableLayout.getChildAt(rowId)).getChildAt(columnId));
+        textView.setText("");
+
+        if (res)
+            return true;
+        else
+            return false;
+    }
+
+    private void CreateMenu1(Menu menu)
     {
         menu.setQwertyMode(true);
 
-        //dobavi sve predmete iz baze i stavi ih kao iteme
-
-        List<String> stringList = DohvatiPredmete();
+        List<String> stringList = GetAllSubjects();
 
         for (String s : stringList)
-        {
-            MenuItem mnu = menu.add(0, 0, 0, s);
-        }
+            menu.add(0, 0, 0, s);
     }
 
-    public List<String> DohvatiPredmete(){ // parametar View??
+    private void CreateMenu2(Menu menu)
+    {
+        menu.setQwertyMode(true);
+
+        menu.add(0, 0, 0,  delete);
+    }
+
+    public List<String> GetAllSubjects()
+    {
         db.open();
         Cursor c = db.getAllSubjects();
         List<String> stringList = new ArrayList<>();
@@ -92,19 +132,19 @@ public class TimetableActivity extends AppCompatActivity {
         db.open();
         // ovdje mozda napraviti ako se je kliknulo na isti da se nista ne dogada, a inace promijeni
 
-        db.insertInTimetable(item.getTitle().toString(),columnId,rowId+7,rowId+8);
+        db.insertInTimetable(item.getTitle().toString(),columnId,rowId+7);
 
-        ShowTimetableEntry(item.getTitle().toString(),columnId,rowId,rowId);
+        ShowTimetableEntry(item.getTitle().toString(),columnId,rowId);
 
         db.close();
         return true;
     }
 
-    public void ShowTimetableEntry(String nazivPredmeta, int day, int from, int to)
+    public void ShowTimetableEntry(String nazivPredmeta, int day, int when)
     {
         TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
 
-        TextView textView = (TextView)((TableRow)tableLayout.getChildAt(from)).getChildAt(day);
+        TextView textView = (TextView)((TableRow)tableLayout.getChildAt(when)).getChildAt(day);
 
         textView.setText(nazivPredmeta);
     }
@@ -119,9 +159,12 @@ public class TimetableActivity extends AppCompatActivity {
             do {
                 Cursor subject = db.getSubject(c.getInt(0));
                 subject.moveToFirst();
-                ShowTimetableEntry(subject.getString(1),Integer.parseInt(c.getString(1)),Integer.parseInt(c.getString(2))-7,Integer.parseInt(c.getString(3))-8);
+                Toast.makeText(this, subject.getString(1) + " " + c.getString(1) + " " + String.valueOf(c.getInt(2)-7), Toast.LENGTH_SHORT).show();
+                ShowTimetableEntry(subject.getString(1),Integer.parseInt(c.getString(1)),Integer.parseInt(c.getString(2))-7);
             } while (c.moveToNext());
         }
         db.close();
     }
+
+
 }

@@ -33,14 +33,12 @@ public class DBAdapter {
     static final String KEY_ROWID2 = "_id";
     static final String KEY_SUBJECTID = "idPredmeta";
     static final String KEY_DAY = "day";
-    static final String KEY_FROM = "fromm";
-    static final String KEY_TO = "too";
+    static final String KEY_TIME = "time";
     static final String DATABASE_CREATE2 =
             "create table raspored (_id integer primary key autoincrement, "
                     + "idPredmeta integer not null, "
                     + "day integer not null,"
-                    + "fromm integer not null,"
-                    + "too integer not null);";
+                    + "time integer not null);";
 
     final Context context;
 
@@ -138,7 +136,7 @@ public class DBAdapter {
     }
 
 
-    public long insertInTimetable(String nazivPredmeta, int day, int from, int to) {
+    public long insertInTimetable(String nazivPredmeta, int day, int time) {
         /*initialValues = ContentValues().apply {
             put(FeedEntry.COLUMN_NAME_TITLE, title)
             put(FeedEntry.COLUMN_NAME_SUBTITLE, subtitle)
@@ -152,21 +150,33 @@ public class DBAdapter {
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
-        else throw new IllegalArgumentException("blaaa");
 
         initialValues.put(KEY_SUBJECTID, mCursor.getInt(0));
         initialValues.put(KEY_DAY, day);
-        initialValues.put(KEY_FROM, from);
-        initialValues.put(KEY_TO, to);
-
-        // Toast.makeText(context, "jaas", Toast.LENGTH_SHORT).show();
+        initialValues.put(KEY_TIME, time);
 
         return db.insert(DATABASE_TABLE2, null, initialValues);
     }
 
     public Cursor getAllTimetableEntries()
     {
-        return db.query(DATABASE_TABLE2, new String[] {KEY_SUBJECTID, KEY_DAY, KEY_FROM, KEY_TO
+        return db.query(DATABASE_TABLE2, new String[] {KEY_SUBJECTID, KEY_DAY, KEY_TIME
         }, null, null, null, null, null);
+    }
+
+    public Cursor getEntry(long rowId, long columnId) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE2, new String[] {
+                                KEY_SUBJECTID, KEY_DAY, KEY_TIME}, KEY_DAY + "=" + columnId + " AND " + KEY_TIME + "=" + rowId+7, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public boolean deleteTimetableEntry(int rowId, int columnId) {
+        return db.delete(DATABASE_TABLE2, KEY_TIME + "=" + rowId+7 + " AND " + KEY_DAY + "=" + columnId , null) > 0;
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,11 +7,11 @@
     tools:context="emdogan.projekt.TimetableActivity"
     android:orientation="vertical">
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/tableLayoutId"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="16dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <TableRow
             android:id="@+id/top_row"
@@ -33,7 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="mon"
+                android:text="MON"
+                android:textColor="#6e0f94"
                 android:textAlignment="center" />
 
             <TextView
@@ -41,7 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="tue"
+                android:text="TUE"
+                android:textColor="#6e0f94"
                 android:textAlignment="center" />
 
             <TextView
@@ -49,7 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="wed"
+                android:text="WED"
+                android:textColor="#6e0f94"
                 android:textAlignment="center" />
 
             <TextView
@@ -57,7 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="thu"
+                android:text="THU"
+                android:textColor="#6e0f94"
                 android:textAlignment="center" />
 
             <TextView
@@ -65,7 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="fri"
+                android:text="FRI"
+                android:textColor="#6e0f94"
                 android:textAlignment="center" />
 
             <TextView
@@ -799,7 +804,7 @@
         </TableRow>
     </TableLayout>
 
-        <LinearLayout
+    <LinearLayout
             android:id="@+id/icons_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -857,4 +862,4 @@
                 android:textColor="#6e0f94"
                 android:textSize="45sp" />
         </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
