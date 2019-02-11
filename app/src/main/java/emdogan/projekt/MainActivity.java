@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         //dodaj predmet
         db.open();
         EditText mEdit = (EditText)findViewById(R.id.editText);
-        long id = db.insertSubject(mEdit.getText().toString());
+        long id = db.insertSubject(mEdit.getText().toString(), "#6e0f94");
         db.close();
         mEdit.setText("");
 /*
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     private void CreateMenu(Menu menu)
     {
         menu.setQwertyMode(true);
-        MenuItem mnu1 = menu.add(0, 0, 0, "Pomadoro timer");
+        MenuItem mnu1 = menu.add(0, 0, 0, "Pomodoro timer");
         {
             mnu1.setAlphabeticShortcut('T');
             mnu1.setIcon(R.mipmap.ic_launcher);

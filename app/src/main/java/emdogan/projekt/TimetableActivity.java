@@ -90,6 +90,7 @@ public class TimetableActivity extends AppCompatActivity {
 
         TextView textView = (TextView)(((TableRow)tableLayout.getChildAt(rowId)).getChildAt(columnId));
         textView.setText("");
+        textView.setBackgroundColor(0);
 
         if (res)
             return true;
@@ -135,21 +136,25 @@ public class TimetableActivity extends AppCompatActivity {
         db.open();
         // ovdje mozda napraviti ako se je kliknulo na isti da se nista ne dogada, a inace promijeni
 
-        db.insertInTimetable(item.getTitle().toString(),columnId,rowId+7);
+        Cursor c = db.getSubjectByName(item.getTitle().toString());
 
-        ShowTimetableEntry(item.getTitle().toString(),columnId,rowId);
+        db.insertInTimetable(c.getInt(0), columnId,rowId+7);
+
+        ShowTimetableEntry(item.getTitle().toString(), c.getString(2),columnId,rowId);
 
         db.close();
         return true;
     }
 
-    public void ShowTimetableEntry(String nazivPredmeta, int day, int when)
+    public void ShowTimetableEntry(String nazivPredmeta, String color, int day, int when)
     {
         TableLayout tableLayout = (TableLayout)findViewById(R.id.tableLayoutId);
 
         TextView textView = (TextView)((TableRow)tableLayout.getChildAt(when)).getChildAt(day);
 
         textView.setText(nazivPredmeta);
+
+        textView.setBackgroundColor(Color.parseColor(color));
     }
 
     public void ShowTimetable()
@@ -163,12 +168,11 @@ public class TimetableActivity extends AppCompatActivity {
                 Cursor subject = db.getSubject(c.getInt(0));
                 subject.moveToFirst();
                 // Toast.makeText(this, "ime: " + subject.getString(1) + ", dan: " + c.getString(1) + ", sat: " + String.valueOf(c.getInt(2)-7), Toast.LENGTH_SHORT).show();
-                ShowTimetableEntry(subject.getString(1), c.getInt(1),c.getInt(2)-7);
+                ShowTimetableEntry(subject.getString(1), subject.getString(2), c.getInt(1),c.getInt(2)-7);
             } while (c.moveToNext());
         }
         db.close();
     }
-
 
     public void onClickDeleteTimetable(View view) {
         AlertDialog alertDialog = new AlertDialog.Builder(TimetableActivity.this).create();
@@ -189,7 +193,6 @@ public class TimetableActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-
     public void deleteAllTimetableEntries() {
         db.open();
         Cursor c = db.getAllTimetableEntries();
@@ -203,6 +206,7 @@ public class TimetableActivity extends AppCompatActivity {
 
                 TextView textView = (TextView)(((TableRow)tableLayout.getChildAt(c.getInt(2)-7)).getChildAt(c.getInt(1)));
                 textView.setText("");
+                textView.setBackgroundColor(0);
 
             } while (c.moveToNext());
         }

@@ -17,6 +17,7 @@ public class DBAdapter {
 
     static final String KEY_ROWID = "_id";
     static final String KEY_NAME = "name";
+    static final String KEY_COLOR = "color";
     static final String TAG = "DBAdapter";
 
     static final String DATABASE_NAME = "MyDB";
@@ -27,7 +28,8 @@ public class DBAdapter {
 
     static final String DATABASE_CREATE =
             "create table predmeti (_id integer primary key autoincrement, "
-                    + "name text not null);";
+                    + "name text not null,"
+                    + "color text not null);";
 
 
     static final String KEY_ROWID2 = "_id";
@@ -93,10 +95,11 @@ public class DBAdapter {
     }
 
     //---ubaci novi predmet s nazivom name---
-    public long insertSubject(String name)
+    public long insertSubject(String name, String color)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
+        initialValues.put(KEY_COLOR, color);
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
@@ -119,7 +122,19 @@ public class DBAdapter {
     {
         Cursor mCursor =
                 db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                                KEY_NAME}, KEY_ROWID + "=" + rowId, null,
+                                KEY_NAME, KEY_COLOR}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public Cursor getSubjectByName(String name) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
+                                KEY_NAME, KEY_COLOR}, KEY_NAME + "='" + name + "'", null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -128,15 +143,16 @@ public class DBAdapter {
     }
 
     //---ažuriraj predmet---
-    public boolean updateSubject(long rowId, String name)
+    public boolean updateSubject(long rowId, String name, String color)
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NAME, name);
+        args.put(KEY_COLOR, color);
         return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
 
-    public long insertInTimetable(String nazivPredmeta, int day, int time) {
+    public long insertInTimetable(int subjectId, int day, int time) {
         /*initialValues = ContentValues().apply {
             put(FeedEntry.COLUMN_NAME_TITLE, title)
             put(FeedEntry.COLUMN_NAME_SUBTITLE, subtitle)
@@ -144,14 +160,7 @@ public class DBAdapter {
 
         ContentValues initialValues = new ContentValues();
 
-        Cursor mCursor =
-                db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID}, KEY_NAME + "='" + nazivPredmeta+"'", null,
-                        null, null, null, null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-
-        initialValues.put(KEY_SUBJECTID, mCursor.getInt(0));
+        initialValues.put(KEY_SUBJECTID, subjectId);
         initialValues.put(KEY_DAY, day);
         initialValues.put(KEY_TIME, time);
 
