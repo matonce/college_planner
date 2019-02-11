@@ -24,12 +24,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import yuku.ambilwarna.AmbilWarnaDialog;
+
 import static emdogan.projekt.R.id.editText;
 import static emdogan.projekt.R.id.homeButton;
 
 public class MainActivity extends AppCompatActivity {
 
     DBAdapter db;
+    int color = Color.parseColor("#c98300");
 
 
     @Override
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         //dodaj predmet
         db.open();
         EditText mEdit = (EditText)findViewById(R.id.editText);
-        long id = db.insertSubject(mEdit.getText().toString(), "#6e0f94");
+        long id = db.insertSubject(mEdit.getText().toString(), String.format("#%06X", (0xFFFFFF & color)));
         db.close();
         mEdit.setText("");
 /*
@@ -161,5 +164,18 @@ public class MainActivity extends AppCompatActivity {
     public void changeColorOfButton(View view) {
         Button button = (Button)findViewById(R.id.homeButton);
         button.setTextColor(Color.parseColor("#6e0f94"));
+    }
+
+    public void onClickChooseColor(View view) {
+        AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(this, 0, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onCancel(AmbilWarnaDialog ambilWarnaDialog) {}
+
+            @Override
+            public void onOk(AmbilWarnaDialog ambilWarnaDialog, int i) {
+                color = i;
+            }
+        });
+        ambilWarnaDialog.show();
     }
 }
