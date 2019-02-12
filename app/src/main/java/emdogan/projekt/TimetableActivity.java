@@ -228,6 +228,11 @@ public class TimetableActivity extends AppCompatActivity {
 
     }
 
+    public void openScores(View view) {
+        Intent intent = new Intent(this, Scores.class);
+        startActivity(intent);
+    }
+
     public void changeColorOfButton(View view) {
         Button button = (Button)findViewById(R.id.timetableButton);
         button.setTextColor(Color.parseColor("#6e0f94"));

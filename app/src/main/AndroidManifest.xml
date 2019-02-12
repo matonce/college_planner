@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TimetableActivity" android:label="@string/raspored"></activity>
+        <activity
+            android:name=".TimetableActivity"
+            android:label="@string/raspored" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +21,13 @@
         </activity>
         <activity
             android:name=".Timer"
-            android:screenOrientation="portrait"
-            android:label="@string/timer"></activity>
+            android:label="@string/timer"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Predmeti"
             android:label="Predmeti"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Scores"></activity>
     </application>
 
 </manifest>

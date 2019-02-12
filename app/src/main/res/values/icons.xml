@@ -14,6 +14,7 @@
     <string name="fa_list_ul">&#xf0ca;</string>
     <string name="fa_trash">&#xf2ed;</string>
     <string name="fa_timetable">&#xf00b;</string>
+    <string name="fa_trash_2">&#xf1f8;</string>
 
     <string name="fa_icon_linechart">&#xf201;</string>
 </resources>

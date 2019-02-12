@@ -23,6 +23,8 @@ public class DBAdapter {
     static final String DATABASE_NAME = "MyDB";
     static final String DATABASE_TABLE = "predmeti";
     static final String DATABASE_TABLE2 = "raspored";
+    static final String DATABASE_TABLE3 = "bodovi";
+    static final String DATABASE_TABLE4 = "ljestvica";
     static final String DATABASE_TABLE5 = "todo";
 
     static final int DATABASE_VERSION = 3;
@@ -42,6 +44,28 @@ public class DBAdapter {
                     + "idPredmeta integer not null, "
                     + "day integer not null,"
                     + "time integer not null);";
+
+    static final String KEY_ROWID3 = "_id";
+    static final String KEY_TYPE = "type";
+    static final String KEY_EARNED = "earned";
+    static final String KEY_TOTAL = "total";
+    static final String DATABASE_CREATE3 =
+            "create table bodovi (_id integer primary key autoincrement, "
+                    + "name text not null, "
+                    + "type text not null,"
+                    + "earned integer,"
+                    + "total integer not null);";
+
+    static final String KEY_DVA = "dva";
+    static final String KEY_TRI = "tri";
+    static final String KEY_CETIRI = "cetiri";
+    static final String KEY_PET = "pet";
+    static final String DATABASE_CREATE4 =
+            "create table ljestvica (idPredmeta integer primary key, "
+                    + "dva integer not null, "
+                    + "tri integer not null,"
+                    + "cetiri integer not null,"
+                    + "pet integer not null);";
 
     static final String KEY_PORUKA = "poruka";
     static final String KEY_CHECKED = "checked"; //0 nije checked, 1 je
@@ -228,5 +252,42 @@ public class DBAdapter {
         ContentValues args = new ContentValues();
         args.put(KEY_CHECKED, checked);
         return db.update(DATABASE_TABLE5, args, KEY_PORUKA + "='" + poruka + "'", null) > 0;
+    }
+
+    public long insertInScores(String name, String type, int total) {
+        ContentValues initialValues = new ContentValues();
+
+        initialValues.put(KEY_NAME, name);
+        initialValues.put(KEY_TYPE, type);
+        initialValues.put(KEY_TOTAL, total);
+        initialValues.put(KEY_EARNED, 0);
+
+        return db.insert(DATABASE_TABLE3, null, initialValues);
+    }
+
+    public Cursor getAllScoresEntries()
+    {
+        return db.query(DATABASE_TABLE3, new String[] {KEY_ROWID3, KEY_NAME, KEY_TYPE, KEY_EARNED, KEY_TOTAL}, null, null, null, null, null);
+    }
+
+    public Cursor getTypesByName(String name) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE3, new String[] {KEY_ROWID3, KEY_TYPE, KEY_EARNED, KEY_TOTAL},
+                        KEY_NAME + "='" + name + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public long addScores(String name, String type, int earned, int total)
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_NAME, name);
+        initialValues.put(KEY_TYPE, type);
+        initialValues.put(KEY_EARNED, earned);
+        initialValues.put(KEY_TOTAL, total);
+        return db.insert(DATABASE_TABLE3, null, initialValues);
     }
 }

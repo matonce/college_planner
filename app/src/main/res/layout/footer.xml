@@ -41,7 +41,7 @@
         android:background="#dadada"
         android:text="@string/fa_timetable"
         android:textColor="#6e0f94"
-        android:textSize="45sp"/>
+        android:textSize="45sp" />
 
     <Button
         android:layout_width="match_parent"
@@ -51,7 +51,8 @@
         android:background="#dadada"
         android:text="@string/fa_chart_bar"
         android:textColor="#6e0f94"
-        android:textSize="45sp"/>
+        android:textSize="45sp"
+        android:onClick="openScores"/>
 
     <Button
         android:id="@+id/timerButton"
