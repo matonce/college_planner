@@ -72,7 +72,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:textAlignment="center"
-                android:text="@string/fa_trash"
+                android:text="@string/fa_trash_2"
                 android:textColor="#6e0f94"
                 android:onClick="onClickDeleteTimetable" />
         </TableRow>
@@ -919,7 +919,7 @@
                 android:textAlignment="center" />
         </TableRow>
     </TableLayout>
-
+<!--
     <LinearLayout
             android:id="@+id/icons_container"
             android:layout_width="match_parent"
@@ -947,7 +947,8 @@
                 android:background="#dadada"
                 android:text="@string/fa_calendar"
                 android:textColor="#6e0f94"
-                android:textSize="45sp" />
+                android:textSize="45sp"
+                android:onClick="OpenTimetable" />
 
             <Button
                 android:id="@+id/timetableButton"
@@ -981,4 +982,7 @@
                 android:textSize="45sp"
                 android:onClick="openTimer" />
         </LinearLayout>
+        -->
+    <!-- footer -->
+    <include layout="@layout/footer"/>
 </LinearLayout>

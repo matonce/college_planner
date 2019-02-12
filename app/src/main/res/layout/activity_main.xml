@@ -12,15 +12,18 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/icons_container"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:context="emdogan.projekt.MainActivity"
+            android:id="@+id/linearLayout1"
             android:orientation="vertical"
             android:weightSum="1">
-
+<!--
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
@@ -59,73 +62,41 @@
                 android:layout_weight="0.05"
                 android:onClick="IspisiPredmete"
                 android:text="@string/ispisi_sve_predmete" />
+-->
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tvoja_to_do_lista"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="#6e0f94" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/pocetni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:onClick="DodajRed" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/icons_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        tools:context=".MainActivity"
-        android:background="#dadada"
-        android:onClick="changeColorOfButton">
-
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#dadada"
-            android:text="@string/fa_home"
-            android:textColor="#6e0f94"
-            android:textSize="45sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#dadada"
-            android:text="@string/fa_calendar"
-            android:textColor="#6e0f94"
-            android:textSize="45sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#dadada"
-            android:text="@string/fa_timetable"
-            android:textColor="#6e0f94"
-            android:textSize="45sp"
-            android:onClick="OpenTimetable" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#dadada"
-            android:text="@string/fa_chart_bar"
-            android:textColor="#6e0f94"
-            android:textSize="45sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="#dadada"
-            android:text="@string/fa_clock"
-            android:textColor="#6e0f94"
-            android:textSize="45sp" 
-            android:onClick="openTimer"/>
-
-    </LinearLayout>
+    <!-- footer -->
+    <include layout="@layout/footer"/>
 
 </RelativeLayout>

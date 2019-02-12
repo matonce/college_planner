@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/icons_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    tools:context=".MainActivity"
+    android:background="#dadada"
+    android:onClick="changeColorOfButton"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#dadada"
+        android:text="@string/fa_home"
+        android:textColor="#6e0f94"
+        android:textSize="45sp"
+        android:onClick="openHome"/>
+
+    <Button
+        android:id="@+id/timetableButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#dadada"
+        android:text="@string/fa_calendar"
+        android:textColor="#6e0f94"
+        android:textSize="45sp"
+        android:onClick="openTimetable" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#dadada"
+        android:text="@string/fa_timetable"
+        android:textColor="#6e0f94"
+        android:textSize="45sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#dadada"
+        android:text="@string/fa_chart_bar"
+        android:textColor="#6e0f94"
+        android:textSize="45sp"/>
+
+    <Button
+        android:id="@+id/timerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="#dadada"
+        android:text="@string/fa_clock"
+        android:textColor="#6e0f94"
+        android:textSize="45sp"
+        android:onClick="openTimer"/>
+
+</LinearLayout>

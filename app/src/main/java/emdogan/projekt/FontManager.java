@@ -39,8 +39,6 @@ public class FontManager {
             }
         } else if (v instanceof TextView) {
             ((TextView) v).setTypeface(typeface);
-        } else if (v instanceof Button){
-            ((Button) v).setTypeface(typeface);
         }
     }
 }

@@ -23,8 +23,9 @@ public class DBAdapter {
     static final String DATABASE_NAME = "MyDB";
     static final String DATABASE_TABLE = "predmeti";
     static final String DATABASE_TABLE2 = "raspored";
+    static final String DATABASE_TABLE5 = "todo";
 
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 3;
 
     static final String DATABASE_CREATE =
             "create table predmeti (_id integer primary key autoincrement, "
@@ -41,6 +42,14 @@ public class DBAdapter {
                     + "idPredmeta integer not null, "
                     + "day integer not null,"
                     + "time integer not null);";
+
+    static final String KEY_PORUKA = "poruka";
+    static final String KEY_CHECKED = "checked"; //0 nije checked, 1 je
+    static final String DATABASE_CREATE5 =
+            "create table todo (_id integer primary key autoincrement, "
+                    + "poruka text not null, "
+                    + "checked int not null);";
+
 
     final Context context;
 
@@ -66,6 +75,7 @@ public class DBAdapter {
             try {
                 db.execSQL(DATABASE_CREATE);
                 db.execSQL(DATABASE_CREATE2);
+                db.execSQL(DATABASE_CREATE5);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -187,5 +197,36 @@ public class DBAdapter {
 
     public boolean deleteTimetableEntry(int rowId, int columnId) {
         return db.delete(DATABASE_TABLE2, KEY_TIME + "=" + (rowId+7) + " AND " + KEY_DAY + "=" + columnId , null) > 0;
+    }
+
+    public long insertTODO(String poruka)
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_PORUKA, poruka);
+        initialValues.put(KEY_CHECKED, 0);
+        return db.insert(DATABASE_TABLE5, null, initialValues);
+    }
+
+    public boolean deleteTODO(String s)
+    {
+        return db.delete(DATABASE_TABLE5, KEY_PORUKA + "='" + s + "'", null) > 0;
+    }
+
+    public Cursor getAllTODO()
+    {
+        return db.query(DATABASE_TABLE5, new String[] {KEY_ROWID, KEY_PORUKA, KEY_CHECKED
+        }, null, null, null, null, null);
+    }
+
+    public boolean updateTODOPoruka(String poruka, String novaporuka)
+    {
+        ContentValues args = new ContentValues();
+        args.put(KEY_PORUKA, novaporuka);
+        return db.update(DATABASE_TABLE5, args, KEY_PORUKA + "='" + poruka + "'", null) > 0;
+    }
+    public boolean updateTODOChecked(String poruka, int checked){
+        ContentValues args = new ContentValues();
+        args.put(KEY_CHECKED, checked);
+        return db.update(DATABASE_TABLE5, args, KEY_PORUKA + "='" + poruka + "'", null) > 0;
     }
 }

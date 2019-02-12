@@ -34,6 +34,7 @@ public class TimetableActivity extends AppCompatActivity {
 
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.icons_container), iconFont);
+        FontManager.markAsIconContainer(findViewById(R.id.spaceView2), iconFont);
 
         db = new DBAdapter(this);
 
@@ -221,6 +222,10 @@ public class TimetableActivity extends AppCompatActivity {
     public void openHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void openTimetable(View v){
+
     }
 
     public void changeColorOfButton(View view) {

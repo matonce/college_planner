@@ -70,7 +70,7 @@ public class Timer extends AppCompatActivity {
 
 
 
-
+/*
     // OK - OPTIONS MENU (samo povrataka na pocetnu stranicu)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,7 +109,7 @@ public class Timer extends AppCompatActivity {
         return false;
     }
 
-
+*/
 
 
 
@@ -338,6 +338,9 @@ public class Timer extends AppCompatActivity {
     public void openHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+    public void openTimer(View view){
+
     }
 
     public void changeColorOfButton(View view) {

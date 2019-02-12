@@ -21,6 +21,11 @@
             android:name=".Timer"
             android:screenOrientation="portrait"
             android:label="@string/timer"></activity>
+        <activity
+            android:name=".Predmeti"
+            android:label="Predmeti"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
