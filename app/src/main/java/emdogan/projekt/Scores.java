@@ -26,6 +26,7 @@ public class Scores extends AppCompatActivity {
     static int id = 1;
     DBAdapter db;
     LinearLayout root;
+    int zadnji;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,20 +79,26 @@ public class Scores extends AppCompatActivity {
         db.close();
     }
 
-    private void addScores(String type, int earned, int total)
+    private void addScores(String type, int earned, int total, RelativeLayout layout)
     {
         RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        params.addRule(RelativeLayout.BELOW, zadnji);
+        params3.addRule(RelativeLayout.BELOW, zadnji);
 
         TextView tv2 = new TextView(this);
         tv2.setId(id++);
         tv2.setText(type + ": ");
+        zadnji = tv2.getId();
 
-        TextView tv3 = new TextView(this);
         params3.addRule(RelativeLayout.RIGHT_OF, tv2.getId());
+        TextView tv3 = new TextView(this);
         tv3.setId(id++);
         tv3.setText(earned + "/" + total);
 
-        //layout.addView(tv3, params3);
+        layout.addView(tv2, params);
+        layout.addView(tv3, params3);
     }
 
     private void addSubject(String name)
@@ -105,6 +112,7 @@ public class Scores extends AppCompatActivity {
         RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         TextView tv1 = new TextView(this);
+        zadnji = id;
         tv1.setId(id++);
         tv1.setText(name);
         tv1.setTextSize(30);
@@ -129,34 +137,38 @@ public class Scores extends AppCompatActivity {
             btn.setTag(name);
 
 
-            EditText tip_et = new EditText(this);
-            tip_et.setId(id++);
+            //EditText tip_et = new EditText(this);
+            //tip_et.setId(id++);
 
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(Scores.this);
-                    //String
-                    alertDialog.setTitle(((Button) v).getTag().toString());
+                    final String naziv = ((Button) v).getTag().toString();
+                    alertDialog.setTitle(naziv);
 
                     Context context = v.getContext();
                     LinearLayout layout = new LinearLayout(context);
                     layout.setOrientation(LinearLayout.VERTICAL);
 
-                    final EditText titleBox = new EditText(context);
-                    titleBox.setHint("Tip bodova");
-                    layout.addView(titleBox); // Notice this is an add method
+                    final EditText tip = new EditText(context);
+                    tip.setHint("Tip bodova");
+                    layout.addView(tip); // Notice this is an add method
 
-                    final EditText descriptionBox = new EditText(context);
-                    descriptionBox.setHint("Maksimalan broj bodova");
-                    layout.addView(descriptionBox); // Another add method
+                    final EditText broj = new EditText(context);
+                    broj.setHint("Maksimalan broj bodova");
+                    layout.addView(broj); // Another add method
 
                     alertDialog.setView(layout);
 
                     alertDialog.setPositiveButton("Potvrdi",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,int which) {
-                                    //insertInScores((alertDialog.getTitle().toString(), )
+                                    db.open();
+                                    db.insertInScores(naziv, tip.getText().toString(), Integer.parseInt(broj.getText().toString()));
+                                    db.close();
+                                    finish();
+                                    startActivity(getIntent());
                                 }
                             });
 
@@ -181,11 +193,22 @@ public class Scores extends AppCompatActivity {
             {
                 do
                 {
-                    addScores(c1.getString(1), c1.getInt(2), c1.getInt(3));
+                    addScores(c1.getString(1), c1.getInt(2), c1.getInt(3), layout);
                 }
                 while (c1.moveToNext());
             }
         }
+        Button dodaj = new Button(this);
+        dodaj.setText("Dodaj podatke");
+        dodaj.setTag(name);
+
+        dodaj.setOnClickListener(new View.OnClickListener() {
+                                     public void onClick(View v) {
+                                         dodaj_btn (v);
+                                     }
+                                 });
+        //layout.addView(dodaj, params3);
+
         root.addView(layout);
         db.close();
     }
@@ -227,6 +250,11 @@ public class Scores extends AppCompatActivity {
     }
 
     public void openScores(View view) {
+
+    }
+
+    public void dodaj_btn(View v)
+    {
 
     }
 }
