@@ -99,6 +99,8 @@ public class DBAdapter {
             try {
                 db.execSQL(DATABASE_CREATE);
                 db.execSQL(DATABASE_CREATE2);
+                db.execSQL(DATABASE_CREATE3);
+                db.execSQL(DATABASE_CREATE4);
                 db.execSQL(DATABASE_CREATE5);
             } catch (SQLException e) {
                 e.printStackTrace();
