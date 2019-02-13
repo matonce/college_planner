@@ -26,8 +26,9 @@
         <activity
             android:name=".Predmeti"
             android:label="Predmeti"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".Scores"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".Scores" />
+        <activity android:name=".Ljestvice"></activity>
     </application>
 
 </manifest>

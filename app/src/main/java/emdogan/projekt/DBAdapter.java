@@ -209,6 +209,12 @@ public class DBAdapter {
         }, null, null, null, null, null);
     }
 
+    public Cursor getAllBounds()
+    {
+        return db.query(DATABASE_TABLE4, new String[] {KEY_SUBJECTID, KEY_DVA, KEY_TRI, KEY_CETIRI, KEY_PET
+        }, null, null, null, null, null);
+    }
+
     public Cursor getEntry(long rowId, long columnId) throws SQLException
     {
         Cursor mCursor =
@@ -283,13 +289,21 @@ public class DBAdapter {
         return mCursor;
     }
 
-    public long addScores(String name, String type, int earned, int total)
+    public boolean updateEarned(String name, String type, int earned)
+    {
+        ContentValues args = new ContentValues();
+        args.put(KEY_EARNED, earned);
+        return db.update(DATABASE_TABLE3, args, KEY_NAME + "='" + name + "'" + " AND " + KEY_TYPE + "='" + type + "'", null) > 0;
+    }
+
+    public long insertBounds(int idPredmeta, int dva, int tri, int cetiri, int pet)
     {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_NAME, name);
-        initialValues.put(KEY_TYPE, type);
-        initialValues.put(KEY_EARNED, earned);
-        initialValues.put(KEY_TOTAL, total);
-        return db.insert(DATABASE_TABLE3, null, initialValues);
+        initialValues.put(KEY_SUBJECTID, idPredmeta);
+        initialValues.put(KEY_DVA, dva);
+        initialValues.put(KEY_TRI, tri);
+        initialValues.put(KEY_CETIRI, cetiri);
+        initialValues.put(KEY_PET, pet);
+        return db.insert(DATABASE_TABLE4, null, initialValues);
     }
 }

@@ -7,4 +7,6 @@
     <string name="raspored">Raspored</string>
     <string name="home">Home</string>
     <string name="timer">Timer</string>
+    <item name="name" type="id" />
+    <item name="type" type="id" />
 </resources>
