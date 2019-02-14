@@ -61,7 +61,7 @@ public class DBAdapter {
     static final String KEY_CETIRI = "cetiri";
     static final String KEY_PET = "pet";
     static final String DATABASE_CREATE4 =
-            "create table ljestvica (idPredmeta integer primary key, "
+            "create table ljestvica (name String primary key, "
                     + "dva integer not null, "
                     + "tri integer not null,"
                     + "cetiri integer not null,"
@@ -289,6 +289,17 @@ public class DBAdapter {
         return mCursor;
     }
 
+    public Cursor getBounds(String name) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE4, new String[] {KEY_DVA, KEY_TRI, KEY_CETIRI, KEY_PET},
+                        KEY_NAME + "='" + name + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
     public boolean updateEarned(String name, String type, int earned)
     {
         ContentValues args = new ContentValues();
@@ -296,14 +307,75 @@ public class DBAdapter {
         return db.update(DATABASE_TABLE3, args, KEY_NAME + "='" + name + "'" + " AND " + KEY_TYPE + "='" + type + "'", null) > 0;
     }
 
-    public long insertBounds(int idPredmeta, int dva, int tri, int cetiri, int pet)
+    public long insertBounds(String name, int dva, int tri, int cetiri, int pet)
     {
         ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_SUBJECTID, idPredmeta);
+        initialValues.put(KEY_NAME, name);
         initialValues.put(KEY_DVA, dva);
         initialValues.put(KEY_TRI, tri);
         initialValues.put(KEY_CETIRI, cetiri);
         initialValues.put(KEY_PET, pet);
         return db.insert(DATABASE_TABLE4, null, initialValues);
     }
+
+    public Cursor getTotals(String name) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE3, new String[] {KEY_TOTAL},
+                        KEY_NAME + "='" + name + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public Cursor getEarned(String name) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE3, new String[] {KEY_EARNED},
+                        KEY_NAME + "='" + name + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public boolean deleteScore(String name, String type)
+    {
+        return db.delete(DATABASE_TABLE3, KEY_NAME + "='" + name + "'" + " AND " + KEY_TYPE + "='" + type + "'", null) > 0;
+    }
+
+    public int getGrade(String name, int current) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE4, new String[] {KEY_DVA, KEY_TRI, KEY_CETIRI, KEY_PET},
+                        KEY_NAME + "='" + name + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        int ret = 1;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (current >= mCursor.getInt(i)) ret = i+2;
+        }
+        db.close();
+        return ret;
+    }
+
+    public int getNumber(String name, int current, int grade) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE4, new String[] {KEY_DVA, KEY_TRI, KEY_CETIRI, KEY_PET},
+                        KEY_NAME + "='" + name + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        grade = grade-2;
+        int ret = mCursor.getInt(grade) - current;
+
+        db.close();
+        return ret;
+    }
+
 }
