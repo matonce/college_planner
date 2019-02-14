@@ -9,4 +9,12 @@
     <string name="timer">Timer</string>
     <item name="name" type="id" />
     <item name="type" type="id" />
+    
+    <!-- activity_timer.xml -->
+    <string name="duljinaIntervalaUcenja">Duljina intervala učenja</string>
+    <string name="duljinaPauze">Duljina pauze</string>
+    <string name="brojIntervalaUcenja">Broj intervala učenja</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    
 </resources>
