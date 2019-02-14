@@ -522,9 +522,10 @@ public class Scores extends AppCompatActivity {
 
     }
 
-    public void changeColorOfButton(View view) {
-        Button button = (Button) findViewById(R.id.scoresButton);
-        button.setTextColor(Color.parseColor("#6e0f94"));
+    public void openCalendar (View view){
+        Intent intent = new Intent(this, Kalendar.class);
+        startActivity(intent);
     }
+
 }
 

@@ -233,8 +233,8 @@ public class TimetableActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void changeColorOfButton(View view) {
-        Button button = (Button)findViewById(R.id.timetableButton);
-        button.setTextColor(Color.parseColor("#6e0f94"));
+    public void openCalendar (View view){
+        Intent intent = new Intent(this, Kalendar.class);
+        startActivity(intent);
     }
 }

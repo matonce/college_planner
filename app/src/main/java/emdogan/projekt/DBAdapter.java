@@ -73,8 +73,18 @@ public class DBAdapter {
             "create table todo (_id integer primary key autoincrement, "
                     + "poruka text not null, "
                     + "checked int not null);";
-
-
+/*
+    static final String KEY_DAN = "dan";
+    static final String KEY_MJ = "mjesec";
+    static final String KEY_GOD = "godina";
+    static final String KEY_VRIJEME = "vrijeme"
+    static final String DATABASE_CREATE6 =
+            "create table obaveze (_id integer primary key autoincrement, "
+                + "dan int not null, "
+                + "mjesec int not null, "
+                + "godina int not null, "
+                + "vrijeme time not null);";
+*/
     final Context context;
 
     DatabaseHelper DBHelper;
@@ -102,6 +112,7 @@ public class DBAdapter {
                 db.execSQL(DATABASE_CREATE3);
                 db.execSQL(DATABASE_CREATE4);
                 db.execSQL(DATABASE_CREATE5);
+                //db.exexSQL(DATABASE_CREATE6);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

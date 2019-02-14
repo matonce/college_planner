@@ -28,7 +28,7 @@
             android:label="Predmeti"
             android:screenOrientation="portrait" />
         <activity android:name=".Scores" />
-        <activity android:name=".Ljestvice"></activity>
+        <activity android:name=".Kalendar"></activity>
     </application>
 
 </manifest>

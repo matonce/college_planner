@@ -28,20 +28,22 @@
         android:layout_weight="1"
         android:gravity="center"
         android:background="#dadada"
-        android:text="@string/fa_calendar"
+        android:text="@string/fa_timetable"
         android:textColor="#6e0f94"
         android:textSize="45sp"
         android:onClick="openTimetable" />
 
     <Button
+        android:id="@+id/calendarButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:background="#dadada"
-        android:text="@string/fa_timetable"
+        android:text="@string/fa_calendar"
         android:textColor="#6e0f94"
-        android:textSize="45sp" />
+        android:textSize="45sp"
+        android:onClick="openCalendar"/>
 
     <Button
         android:id="@+id/scoresButton"
