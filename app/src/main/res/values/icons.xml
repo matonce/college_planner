@@ -17,6 +17,6 @@
     <string name="fa_trash_2">&#xf1f8;</string>
     <string name="plus">&#xf067;</string>
     <string name="edit">&#xf044;</string>
-
+    <string name="fa_plus_circle">&#xf055;</string>
     <string name="fa_icon_linechart">&#xf201;</string>
 </resources>
