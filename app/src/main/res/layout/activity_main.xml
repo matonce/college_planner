@@ -23,46 +23,7 @@
             android:id="@+id/linearLayout1"
             android:orientation="vertical"
             android:weightSum="1">
-<!--
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.03"
-                android:text="@string/unesi_ime_predmeta" />
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:layout_weight="0.05" />
-
-            <Button
-                android:id="@+id/colorButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.03"
-                android:text="odaberi boju"
-                android:onClick="onClickChooseColor"/>
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.05"
-                android:onClick="DodajPredmet"
-                android:text="@string/dodaj_predmet" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.05"
-                android:onClick="IspisiPredmete"
-                android:text="@string/ispisi_sve_predmete" />
--->
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
@@ -92,6 +53,27 @@
                     android:onClick="DodajRed" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/novi"  >
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="85dp"
+                android:layout_marginStart="85dp"
+                android:text="@string/tvoje_obaveze"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="#6e0f94"
+                />
+
         </LinearLayout>
 
     </ScrollView>
