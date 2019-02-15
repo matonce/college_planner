@@ -1,24 +1,44 @@
 package emdogan.projekt;
 
+import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import yuku.ambilwarna.AmbilWarnaDialog;
+
+import static emdogan.projekt.R.id.editText;
+import static emdogan.projekt.R.id.homeButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,11 +59,12 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button)findViewById(R.id.homeButton);
         button.setTextColor(Color.parseColor("#c98300"));
 
+        LinearLayout ll = (LinearLayout) findViewById(R.id.novi);
+
         //za to do
         db.open();
-        Cursor c = db.getAllTODO();
 
-        LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout1);
+        Cursor c = db.getAllTODO();
 
         if (c.moveToFirst())
         {
@@ -62,7 +83,47 @@ public class MainActivity extends AppCompatActivity {
 
             } while (c.moveToNext());
         }
+
+        //za obaveze
+
+        LinearLayout l = (LinearLayout) findViewById(R.id.linearLayout1);
+
+        Cursor cursor = db.getOnDay(System.currentTimeMillis());
+        if (cursor.moveToFirst())
+        {
+            do {
+                TextView txtv1 = new TextView(l.getContext());
+                txtv1.setTextColor(Color.parseColor("#6e0f94"));
+                txtv1.setTextSize(20);
+                txtv1.setTypeface(txtv1.getTypeface(), Typeface.BOLD);
+
+                String min;
+                String sat;
+
+                if (cursor.getInt(1) < 10)
+                    min = "0" + cursor.getInt(1);
+                else
+                    min = String.valueOf(cursor.getInt(1));
+
+                if (cursor.getInt(0) < 10)
+                    sat = "0" + cursor.getInt(0);
+                else
+                    sat = String.valueOf(cursor.getInt(0));
+
+                txtv1.setText(sat + " : " + min);
+
+                TextView txtv2 = new TextView(getApplicationContext());
+                txtv2.setTypeface(txtv2.getTypeface(), Typeface.BOLD);
+                txtv2.setText(cursor.getString(2));
+                txtv2.setTextSize(20);
+
+                l.addView(txtv1);
+                l.addView(txtv2);
+            } while (cursor.moveToNext());
+        }
+
         db.close();
+
     }
 
 
@@ -119,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         EditText e = (EditText) findViewById(R.id.editText2);
 
         if (!e.getText().toString().equals("")){
-            LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout1);
+            LinearLayout ll = (LinearLayout) findViewById(R.id.novi);
 
             RelativeLayout r = new RelativeLayout(getApplicationContext());
 
@@ -129,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
 
             DodajEditText(r, e.getText().toString(), 0);
 
+            //RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+            //params.addRule(RelativeLayout.ABOVE, .getId());
             ll.addView(r);
 
             db.open();
@@ -299,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openTimetable(View view) {
-        Intent intent = new Intent(MainActivity.this, Raspored.class);
+        Intent intent = new Intent(MainActivity.this, TimetableActivity.class);
         startActivity(intent);
     }
 
