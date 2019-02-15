@@ -75,18 +75,19 @@ public class DBAdapter {
             "create table todo (_id integer primary key autoincrement, "
                     + "poruka text not null, "
                     + "checked int not null);";
-/*
     static final String KEY_DAN = "dan";
     static final String KEY_MJ = "mjesec";
     static final String KEY_GOD = "godina";
-    static final String KEY_VRIJEME = "vrijeme"
+    static final String KEY_SAT = "sat";
+    static final String KEY_MIN = "minuta";
     static final String DATABASE_CREATE6 =
             "create table obaveze (_id integer primary key autoincrement, "
                 + "dan int not null, "
                 + "mjesec int not null, "
                 + "godina int not null, "
-                + "vrijeme time not null);";
-*/
+                + "sat int not null, "
+                + "minuta int not null, "
+                + "poruka string not null);";
     final Context context;
 
     DatabaseHelper DBHelper;
@@ -114,7 +115,7 @@ public class DBAdapter {
                 db.execSQL(DATABASE_CREATE3);
                 db.execSQL(DATABASE_CREATE4);
                 db.execSQL(DATABASE_CREATE5);
-                //db.exexSQL(DATABASE_CREATE6);
+                db.exexSQL(DATABASE_CREATE6);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -407,6 +408,63 @@ public class DBAdapter {
 
         db.close();
         return ret;
+    }
+    
+        public long insertObaveza(long date, int sat, int minuta, String text)
+    {
+        Calendar c = Calendar.getInstance(TimeZone.getDefault());
+        c.setTimeInMillis(date);
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_DAN, c.get(Calendar.DAY_OF_MONTH));
+        initialValues.put(KEY_MJ, c.get(Calendar.MONTH));
+        initialValues.put(KEY_GOD, c.get(Calendar.YEAR));
+        initialValues.put(KEY_SAT, sat);
+        initialValues.put(KEY_MIN, minuta);
+        initialValues.put(KEY_PORUKA, text);
+        //Toast.makeText(, String.valueOf(c.get(Calendar.DAY_OF_MONTH)), Toast.LENGTH_SHORT).show();
+        return db.insert(DATABASE_TABLE6, null, initialValues);
+    }
+
+    public long insertObaveza2(int dan, int mj, int god, int sat, int minuta, String text)
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_DAN, dan);
+        initialValues.put(KEY_MJ, mj);
+        initialValues.put(KEY_GOD, god);
+        initialValues.put(KEY_SAT, sat);
+        initialValues.put(KEY_MIN, minuta);
+        initialValues.put(KEY_PORUKA, text);
+        //Toast.makeText(, String.valueOf(c.get(Calendar.DAY_OF_MONTH)), Toast.LENGTH_SHORT).show();
+        return db.insert(DATABASE_TABLE6, null, initialValues);
+    }
+
+    public Cursor getOnDay(long date)
+    {
+        Calendar c = Calendar.getInstance(TimeZone.getDefault());
+        c.setTimeInMillis(date);
+
+        Cursor mCursor =
+                db.query(DATABASE_TABLE6, new String[] {KEY_SAT, KEY_MIN, KEY_PORUKA}, KEY_DAN + "=" + c.get(Calendar.DAY_OF_MONTH) + " AND " +
+                        KEY_MJ + "=" + c.get(Calendar.MONTH) + " AND " + KEY_GOD + "=" + c.get(Calendar.YEAR), null, null, null, KEY_SAT + ", " + KEY_MIN);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
+    }
+
+    public Cursor getOnDay2(int year, int month, int day)
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE6, new String[] {KEY_SAT, KEY_MIN, KEY_PORUKA}, KEY_DAN + "=" + day + " AND " +
+                        KEY_MJ + "=" + month + " AND " + KEY_GOD + "=" + year, null, null, null, KEY_SAT + ", " + KEY_MIN);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+
     }
 
 }
