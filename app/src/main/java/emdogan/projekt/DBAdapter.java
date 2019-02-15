@@ -349,6 +349,28 @@ public class DBAdapter {
         return mCursor;
     }
 
+    public Cursor getEarnedForType(String name, String type) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE3, new String[] {KEY_EARNED},
+                        KEY_NAME + "='" + name + "'" + " AND " + KEY_TYPE + "='" + type + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public Cursor getTotalForType(String name, String type) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(DATABASE_TABLE3, new String[] {KEY_TOTAL},
+                        KEY_NAME + "='" + name + "'" + " AND " + KEY_TYPE + "='" + type + "'", null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
     public boolean deleteScore(String name, String type)
     {
         return db.delete(DATABASE_TABLE3, KEY_NAME + "='" + name + "'" + " AND " + KEY_TYPE + "='" + type + "'", null) > 0;

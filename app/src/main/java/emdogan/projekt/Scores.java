@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,6 +64,7 @@ public class Scores extends AppCompatActivity {
         db.open();
         Cursor c = db.getAllSubjects();
 
+        //menu za izbor predmeta za unos ljestvice za ocjene
         if (c.moveToFirst()) {
             do {
                 MenuItem mnu2 = menu.add(0, brojac, brojac, "Dodaj/uredi ljestvicu za " + c.getString(1));
@@ -88,19 +90,38 @@ public class Scores extends AppCompatActivity {
         layout.setOrientation(LinearLayout.VERTICAL);
 
         final EditText dva = new EditText(this);
-        dva.setHint("Bodovi za 2");
-        layout.addView(dva); // Notice this is an add method
-
         final EditText tri = new EditText(this);
-        tri.setHint("Bodovi za 3");
-        layout.addView(tri); // Another add method
-
         final EditText cetiri = new EditText(this);
-        cetiri.setHint("Bodovi za 4");
-        layout.addView(cetiri); // Another add method
-
         final EditText pet = new EditText(this);
-        pet.setHint("Bodovi za 5");
+
+        db.open();
+        Cursor c = db.getBounds(naziv);
+        //ako ljestvica jos nije unesena, prikazuje se ovo u textboxu
+        if (c.getCount() == 0)
+        {
+            dva.setHint("Bodovi za 2");
+            tri.setHint("Bodovi za 3");
+            cetiri.setHint("Bodovi za 4");
+            pet.setHint("Bodovi za 5");
+        }
+        //ali ako je unesena, onda se prikazu trenutne vrijednosti
+        else
+        {
+            dva.setHint(c.getString(0));
+            tri.setHint(c.getString(1));
+            cetiri.setHint(c.getString(2));
+            pet.setHint(c.getString(3));
+        }
+
+        //dopustam samo unos intova
+        dva.setInputType(2);
+        tri.setInputType(2);
+        cetiri.setInputType(2);
+        pet.setInputType(2);
+
+        layout.addView(dva); // Notice this is an add method
+        layout.addView(tri); // Another add method
+        layout.addView(cetiri); // Another add method
         layout.addView(pet); // Another add method
 
         alertDialog.setView(layout);
@@ -108,11 +129,24 @@ public class Scores extends AppCompatActivity {
         alertDialog.setPositiveButton("Potvrdi",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        db.open();
-                        db.insertBounds(naziv, Integer.parseInt(dva.getText().toString()), Integer.parseInt(tri.getText().toString()), Integer.parseInt(cetiri.getText().toString()), Integer.parseInt(pet.getText().toString()));
-                        db.close();
-                        finish();
-                        startActivity(getIntent());
+                        //ne smije biti prazan
+                        if(dva.getText().toString().matches("") || tri.getText().toString().matches("")
+                                || cetiri.getText().toString().matches("") || pet.getText().toString().matches(""))
+                        {
+                            Toast.makeText(Scores.this, "Unesite brojeve u sva polja", Toast.LENGTH_LONG).show();
+                            dialog.cancel();
+                        }
+                        //provejravam jesu li granie dobro postavljene (npr prag za dva mora biti manji od praga za tri, nista ne smije biti 0)
+                        else if(provjeri(Integer.parseInt(dva.getText().toString()), Integer.parseInt(tri.getText().toString()),
+                                Integer.parseInt(cetiri.getText().toString()), Integer.parseInt(pet.getText().toString()))) {
+                            db.open();
+                            db.insertBounds(naziv, Integer.parseInt(dva.getText().toString()), Integer.parseInt(tri.getText().toString()),
+                                    Integer.parseInt(cetiri.getText().toString()), Integer.parseInt(pet.getText().toString()));
+                            db.close();
+                            finish();
+                            startActivity(getIntent());
+                        }
+                        else Toast.makeText(Scores.this, "Nepravilan unos", Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -127,9 +161,16 @@ public class Scores extends AppCompatActivity {
         return true;
     }
 
+    public boolean provjeri(int dva, int tri, int cetiri, int pet)
+    {
+        if (dva < tri && tri < cetiri && cetiri < pet && dva != 0) return true;
+        else return false;
+    }
+
     private void showSubjects() {
         db.open();
         Cursor c = db.getAllSubjects();
+        //nema jos unesenih predmeta, nemam sto prikazati
         if (c.getCount() == 0) {
             RelativeLayout layout = new RelativeLayout(this);
 
@@ -146,7 +187,9 @@ public class Scores extends AppCompatActivity {
             layout.addView(tv, params1);
 
             root.addView(layout);
-        } else {
+        }
+        //za svaki predmet pozivam fju i kojoj cu dodati sve sto je uneseno za taj predmet
+        else {
             if (c.moveToFirst()) {
                 do {
                     addSubject(c.getString(1));
@@ -158,6 +201,9 @@ public class Scores extends AppCompatActivity {
     }
 
     private void addScores(String type, int earned, int total, RelativeLayout layout, String name) {
+
+        Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
+
         RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams(100, 100);
@@ -175,6 +221,7 @@ public class Scores extends AppCompatActivity {
         zadnji = tv2.getId();
 
         Button bod = new Button(this);
+        FontManager.markAsIconContainer(bod, iconFont);
         bod.setTag(R.id.name, name);
         bod.setId(id++);
         bod.setTag(R.id.type, type);
@@ -185,19 +232,13 @@ public class Scores extends AppCompatActivity {
                 dodaj_bodove(v);
             }
         });
-        bod.setText("+");
-
-        params3.addRule(RelativeLayout.RIGHT_OF, tv2.getId());
-        TextView tv3 = new TextView(this);
-        tv3.setId(id++);
-        tv3.setText(earned + "/" + total + "  ");
-        tv3.setTextSize(25);
-        params4.addRule(RelativeLayout.RIGHT_OF, tv3.getId());
+        bod.setText(R.string.edit);
 
         Button brisi = new Button(this);
         brisi.setTag(R.id.name, name);
+        brisi.setId(id++);
         brisi.setTag(R.id.type, type);
-        params5.addRule(RelativeLayout.RIGHT_OF, bod.getId());
+        params5.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, bod.getId());
 
         brisi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,7 +246,15 @@ public class Scores extends AppCompatActivity {
                 brisi_bodove(v);
             }
         });
-        brisi.setText("-");
+        brisi.setText(R.string.fa_trash_2);
+        FontManager.markAsIconContainer(brisi, iconFont);
+
+        params3.addRule(RelativeLayout.RIGHT_OF, tv2.getId());
+        TextView tv3 = new TextView(this);
+        tv3.setId(id++);
+        tv3.setText(earned + "/" + total + "  ");
+        tv3.setTextSize(25);
+        params4.addRule(RelativeLayout.LEFT_OF, brisi.getId());
 
         layout.addView(tv2, params);
         layout.addView(tv3, params3);
@@ -254,6 +303,7 @@ public class Scores extends AppCompatActivity {
             btn.setTag(name);
             btn.setId(id++);
 
+            //omogucim unos tipa bodova i max broja za taj dio
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     dodaj_btn(v);
@@ -272,7 +322,7 @@ public class Scores extends AppCompatActivity {
                 }
                 while (c1.moveToNext());
 
-                //nakon svih bodova ide gumb za dodavanje
+                //nakon svih bodova ide gumb za dodavanje jos kojeg elementa
                 Button dodaj = new Button(this);
                 dodaj.setText("Dodaj podatke");
                 dodaj.setTag(name);
@@ -302,13 +352,13 @@ public class Scores extends AppCompatActivity {
 
             db.open();
             Cursor c2 = db.getBounds(name);
-            //ako je upisana neka ljestvica onda imam poruke ispisane statistike nakon gumba
+            //ako je upisana neka ljestvica onda imam poruke ispisane statistike nakon gumba, inace ne
             if (c2.getCount() != 0) {
 
                 TextView ocjena = new TextView(this);
                 RelativeLayout.LayoutParams params_oc = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
                 params_oc.addRule(RelativeLayout.BELOW, zadnji_rez_id);
-                zadnji_rez_id = id; //ispod ocjene ce ici progress bar
+                zadnji_rez_id = id; //ispod ocjene ce ici progress bar pa moram ovo zapamtiti
                 ocjena.setId(id++);
                 int trenutna = findGrade(name, ukupni_earned);
 
@@ -321,6 +371,7 @@ public class Scores extends AppCompatActivity {
                 layout.addView(ocjena, params_oc);
             }
 
+            //progress bar na kraju
             if(c1.getCount() != 0)
             {
                 ProgressBar progressBar = new ProgressBar(Scores.this, null, android.R.attr.progressBarStyleHorizontal);
@@ -339,28 +390,6 @@ public class Scores extends AppCompatActivity {
         db.close();
     }
 
-    public void Ispisi() {
-        db.open();
-        Cursor c = db.getAllBounds();
-        if (c.moveToFirst()) {
-            do {
-                Display(c);
-
-            } while (c.moveToNext());
-        }
-        db.close();
-    }
-
-    public void Display(Cursor c) {
-        Toast.makeText(this,
-                "id: " + c.getString(0) + "\n" +
-                        "dva: " + c.getString(1) + "\n" +
-                        "tri: " + c.getString(2) + "\n" +
-                        "cetiri: " + c.getString(3) + "\n" +
-                        "pet: " + c.getString(4) + "\n",
-                Toast.LENGTH_LONG).show();
-    }
-
     public void dodaj_btn(View v) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Scores.this);
         final String naziv = ((Button) v).getTag().toString();
@@ -372,11 +401,11 @@ public class Scores extends AppCompatActivity {
 
         final EditText tip = new EditText(context);
         tip.setHint("Tip bodova");
-        layout.addView(tip); // Notice this is an add method
+        layout.addView(tip);
 
         final EditText broj = new EditText(context);
         broj.setHint("Maksimalan broj bodova");
-        layout.addView(broj); // Another add method
+        layout.addView(broj);
 
         alertDialog.setView(layout);
 
@@ -411,19 +440,32 @@ public class Scores extends AppCompatActivity {
         layout.setOrientation(LinearLayout.VERTICAL);
 
         final EditText unos = new EditText(context);
-        unos.setHint("Unesite bodove");
-        layout.addView(unos); // Notice this is an add method
+
+        db.open();
+        final Cursor c = db.getEarnedForType(predmet, tip);
+        final Cursor tot = db.getTotalForType(predmet, tip);
+        unos.setHint(c.getString(0));
+
+        unos.setInputType(2);
+
+        layout.addView(unos);
 
         alertDialog.setView(layout);
 
         alertDialog.setPositiveButton("Potvrdi",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        db.open();
-                        db.updateEarned(predmet, tip, Integer.parseInt(unos.getText().toString()));
-                        db.close();
-                        finish();
-                        startActivity(getIntent());
+                        if (unos.getText().toString().matches(""))
+                            Toast.makeText(Scores.this, "Prazan unos" ,Toast.LENGTH_LONG).show();
+                        else if(Integer.parseInt(tot.getString(0)) < Integer.parseInt(unos.getText().toString()))
+                            Toast.makeText(Scores.this, "Nepravilan unos" ,Toast.LENGTH_LONG).show();
+                        else {
+                            db.open();
+                            db.updateEarned(predmet, tip, Integer.parseInt(unos.getText().toString()));
+                            db.close();
+                            finish();
+                            startActivity(getIntent());
+                        }
                     }
                 });
 
