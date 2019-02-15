@@ -362,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openTimetable(View view) {
-        Intent intent = new Intent(MainActivity.this, TimetableActivity.class);
+        Intent intent = new Intent(MainActivity.this, Raspored.class);
         startActivity(intent);
     }
 

@@ -190,7 +190,7 @@ public class Kalendar extends AppCompatActivity {
     }
 
     public void openTimetable(View view) {
-        Intent intent = new Intent(this, TimetableActivity.class);
+        Intent intent = new Intent(this, Raspored.class);
         startActivity(intent);
     }
 

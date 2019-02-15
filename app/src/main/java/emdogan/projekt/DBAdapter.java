@@ -13,6 +13,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 public class DBAdapter {
 
     static final String KEY_ROWID = "_id";
@@ -27,6 +30,7 @@ public class DBAdapter {
     static final String DATABASE_TABLE3 = "bodovi";
     static final String DATABASE_TABLE4 = "ljestvica";
     static final String DATABASE_TABLE5 = "todo";
+    static final String DATABASE_TABLE6 = "obaveze";
 
     static final int DATABASE_VERSION = 3;
 
@@ -115,7 +119,7 @@ public class DBAdapter {
                 db.execSQL(DATABASE_CREATE3);
                 db.execSQL(DATABASE_CREATE4);
                 db.execSQL(DATABASE_CREATE5);
-                db.exexSQL(DATABASE_CREATE6);
+                db.execSQL(DATABASE_CREATE6);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

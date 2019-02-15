@@ -5,6 +5,7 @@
     <string name="dodaj_predmet">Dodaj predmet</string>
     <string name="unesi_ime_predmeta">Unesi ime predmeta</string>
     <string name="raspored">Raspored</string>
+    <string name="tvoje_obaveze">Tvoje obaveze: </string>
     <string name="home">Home</string>
     <string name="timer">Timer</string>
     <item name="name" type="id" />
