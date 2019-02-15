@@ -18,6 +18,22 @@
         android:inputType="textPersonName"
         android:layout_weight="0.05" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:text="@string/unesi_kraticu_predmeta" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_weight="0.05" />
+
+
     <Button
         android:id="@+id/colorButton"
         android:layout_width="match_parent"

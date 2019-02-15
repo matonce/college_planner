@@ -18,6 +18,7 @@ public class DBAdapter {
     static final String KEY_ROWID = "_id";
     static final String KEY_NAME = "name";
     static final String KEY_COLOR = "color";
+    static final String KEY_SHORTCUT = "shortcut";
     static final String TAG = "DBAdapter";
 
     static final String DATABASE_NAME = "MyDB";
@@ -32,6 +33,7 @@ public class DBAdapter {
     static final String DATABASE_CREATE =
             "create table predmeti (_id integer primary key autoincrement, "
                     + "name text not null,"
+                    + "shortcut text not null,"
                     + "color text not null);";
 
 
@@ -142,11 +144,12 @@ public class DBAdapter {
     }
 
     //---ubaci novi predmet s nazivom name---
-    public long insertSubject(String name, String color)
+    public long insertSubject(String name, String shortcut, String color)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
         initialValues.put(KEY_COLOR, color);
+        initialValues.put(KEY_SHORTCUT, shortcut);
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
@@ -169,7 +172,7 @@ public class DBAdapter {
     {
         Cursor mCursor =
                 db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                                KEY_NAME, KEY_COLOR}, KEY_ROWID + "=" + rowId, null,
+                                KEY_NAME, KEY_SHORTCUT, KEY_COLOR}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -181,7 +184,7 @@ public class DBAdapter {
     {
         Cursor mCursor =
                 db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                                KEY_NAME, KEY_COLOR}, KEY_NAME + "='" + name + "'", null,
+                                KEY_NAME, KEY_SHORTCUT, KEY_COLOR}, KEY_NAME + "='" + name + "'", null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -200,11 +203,6 @@ public class DBAdapter {
 
 
     public long insertInTimetable(int subjectId, int day, int time) {
-        /*initialValues = ContentValues().apply {
-            put(FeedEntry.COLUMN_NAME_TITLE, title)
-            put(FeedEntry.COLUMN_NAME_SUBTITLE, subtitle)
-        }*/
-
         ContentValues initialValues = new ContentValues();
 
         initialValues.put(KEY_SUBJECTID, subjectId);

@@ -34,9 +34,13 @@ public class Predmeti extends AppCompatActivity {
         //dodaj predmet
         db.open();
         EditText mEdit = (EditText)findViewById(R.id.editText);
-        long id = db.insertSubject(mEdit.getText().toString(), String.format("#%06X", (0xFFFFFF & color)));
+        EditText mEdit2 = (EditText)findViewById(R.id.editText2);
+        long id = db.insertSubject(mEdit.getText().toString(), mEdit2.getText().toString(), String.format("#%06X", (0xFFFFFF & color)));
         db.close();
+
         mEdit.setText("");
+        mEdit2.setText("");
+        findViewById(R.id.colorButton).setBackgroundDrawable(findViewById(R.id.button).getBackground());
     }
 
     public void IspisiPredmete(View v){
@@ -69,6 +73,7 @@ public class Predmeti extends AppCompatActivity {
             @Override
             public void onOk(AmbilWarnaDialog ambilWarnaDialog, int i) {
                 color = i;
+                findViewById(R.id.colorButton).setBackgroundColor(color);
             }
         });
         ambilWarnaDialog.show();

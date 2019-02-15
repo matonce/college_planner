@@ -1,44 +1,24 @@
 package emdogan.projekt;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import yuku.ambilwarna.AmbilWarnaDialog;
-
-import static emdogan.projekt.R.id.editText;
-import static emdogan.projekt.R.id.homeButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -319,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openTimetable(View view) {
-        Intent intent = new Intent(MainActivity.this, TimetableActivity.class);
+        Intent intent = new Intent(MainActivity.this, Raspored.class);
         startActivity(intent);
     }
 

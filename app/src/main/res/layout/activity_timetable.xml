@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="emdogan.projekt.TimetableActivity"
+    tools:context="emdogan.projekt.Raspored"
     android:orientation="vertical">
 
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -925,7 +925,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            tools:context=".TimetableActivity"
+            tools:context=".Raspored"
             android:background="#dadada">
 
             <Button

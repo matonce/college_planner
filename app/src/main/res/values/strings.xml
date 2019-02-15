@@ -16,5 +16,6 @@
     <string name="brojIntervalaUcenja">Broj intervala učenja</string>
     <string name="start">START</string>
     <string name="stop">STOP</string>
-    
+    <string name="unesi_kraticu_predmeta">Unesi kraticu predmeta</string>
+
 </resources>

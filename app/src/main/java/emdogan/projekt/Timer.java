@@ -1,44 +1,18 @@
 package emdogan.projekt;
 
-import android.animation.ObjectAnimator;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.method.KeyListener;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.io.Console;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Timer extends AppCompatActivity {
     // odbrojavanje
@@ -543,7 +517,7 @@ public class Timer extends AppCompatActivity {
 
     // ZA IKONICE DOLJE
     public void openTimetable(View view) {
-        Intent intent = new Intent(this, TimetableActivity.class);
+        Intent intent = new Intent(this, Raspored.class);
         startActivity(intent);
     }
     public void openHome(View view) {
