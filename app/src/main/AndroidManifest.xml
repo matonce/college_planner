@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="emdogan.projekt">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +23,14 @@
         </activity>
         <activity
             android:name=".Timer"
-            android:label="@string/timer" />
+            android:label="@string/timer" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".MyBroadcastReceiver" >
+        </receiver>
         <activity
             android:name=".Predmeti"
             android:label="Predmeti"
