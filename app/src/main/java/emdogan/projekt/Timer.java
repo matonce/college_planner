@@ -1,10 +1,19 @@
 package emdogan.projekt;
 
+import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +43,6 @@ public class Timer extends AppCompatActivity {
 
     long systemSekunda;     // da znamo koliko je proslo sekundi od kada se dogodio onPause
 
-
     public static final String MYPREFS = "MyPrefsFile";
 
     // progress bar
@@ -48,8 +56,6 @@ public class Timer extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-
-        // Toast.makeText(this, "onSaveInstanceState", Toast.LENGTH_SHORT).show();
 
         savedInstanceState.putBoolean("trenutnoUcenje", trenutnoUcenje);
 
@@ -69,13 +75,11 @@ public class Timer extends AppCompatActivity {
         savedInstanceState.putLong("systemSekunda", systemSekunda);
 
         resetiraj();        // resetiramo nakon sto sve spremimo
-    }
 
+    }
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
-        // Toast.makeText(this, "on RestoreInstanceState", Toast.LENGTH_SHORT).show();
 
         trenutnoUcenje = savedInstanceState.getBoolean("trenutnoUcenje");
 
@@ -97,7 +101,6 @@ public class Timer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
@@ -115,7 +118,6 @@ public class Timer extends AppCompatActivity {
         button.setTextColor(Color.parseColor("#c98300"));
 
         if (savedInstanceState != null) {
-            // Toast.makeText(this, "onCreate - savedInstanceState", Toast.LENGTH_SHORT).show();
 
             trenutnoUcenje = savedInstanceState.getBoolean("trenutnoUcenje");
             pokrenutTimer = savedInstanceState.getBoolean("pokrenutTimer");
@@ -137,18 +139,17 @@ public class Timer extends AppCompatActivity {
         }
 
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         loadPreferences();
 
-        // Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+        ((TextView) findViewById(R.id.timerTextView)).setText("");
+
         if (pokrenutTimer) {
             pokreniPolovniTimer();
         }
     }
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -161,8 +162,6 @@ public class Timer extends AppCompatActivity {
             pauzaTimer.cancel();
 
     }
-
-
 
 
     protected void savePreferences(){
@@ -194,7 +193,6 @@ public class Timer extends AppCompatActivity {
         //commit promjene
         editor.commit();
     }
-
     public void loadPreferences(){
         // dohvatimo preference
         int mode = MODE_PRIVATE;
@@ -257,14 +255,6 @@ public class Timer extends AppCompatActivity {
                 // trenVrijeme nam odreduje od koje sekunde moramo nastaviti brojati
                 int trenutnoVrijeme = (int)((pauziranaSekunda) + (trenutnaSystemSekunda - systemSekunda)/1000);
 
-                /*
-                Log.d("myTag", "ON RESUME -------------------------------- stari timer se jos vrti");
-                Log.d("myTag", "pauzirana sekunda = " + pauziranaSekunda);
-                Log.d("myTag", "proslo sekundi vani: " + (trenutnaSystemSekunda - systemSekunda)/1000);
-                Log.d("myTag", "trenutnoVrijeme = " +  trenutnoVrijeme);
-                Log.d("myTag", "do kraja intervala: " + (duljinaIntervala - trenutnoVrijeme));
-                Log.d("myTag", "");
-                */
                 resetiraj();
 
                 // nadoknadimo pauziranaSekunda za propusteno vrijeme
@@ -367,6 +357,8 @@ public class Timer extends AppCompatActivity {
                 pokrenutTimer = true;
 
                 pokreniUcenjeTimer(duljinaIntervala, 0);
+
+                SetAlarm();
             }
         }
     }
@@ -466,8 +458,9 @@ public class Timer extends AppCompatActivity {
 
     // poziva se klikom na gumb STOP - sve ponisti i pocisti (omoguci pokretanje novog timera)
     public void zaustaviTimer(View view) {
-        resetirajSve();
+        CancelAlarm();
         pokrenutTimer = false;
+        resetirajSve();
     }
 
     // "pocisti izgled aktivnosti prije nek se pauzira/unisti"
@@ -513,6 +506,26 @@ public class Timer extends AppCompatActivity {
 
 
 
+    // NOTIFIKACIJE
+    private void SetAlarm() {
+        Intent intent = new Intent(this, MyBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this.getApplicationContext(), 234324243, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+ 1000*ukupnoTrajanje, pendingIntent);
+    }
+
+    private void CancelAlarm() {
+        Intent intent = new Intent(this, MyBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this.getApplicationContext(), 234324243, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        alarmManager.cancel(pendingIntent);
+
+    }
+
+
 
 
     // ZA IKONICE DOLJE
@@ -527,14 +540,13 @@ public class Timer extends AppCompatActivity {
     public void openTimer(View view){
 
     }
-
     public void openScores(View view) {
         Intent intent = new Intent(this, Scores.class);
         startActivity(intent);
     }
-
     public void openCalendar (View view){
         Intent intent = new Intent(this, Kalendar.class);
         startActivity(intent);
     }
+
 }
