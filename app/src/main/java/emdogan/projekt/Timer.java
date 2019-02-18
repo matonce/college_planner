@@ -228,7 +228,7 @@ public class Timer extends AppCompatActivity {
 
             if ((trenutnaSystemSekunda - systemSekunda)/1000 >= (ukupnoTrajanje - pauziranaSekunda)) {
                 resetirajSve();
-                ((TextView) findViewById(R.id.timerTextView)).setText("ZAVRŠENO ODBROJAVANJE");
+                ((TextView) findViewById(R.id.timerTextView)).setText("TIMER JE ZAVRŠIO");
                 pokrenutTimer = false;
             }
             else {  // moramo pokrenuti novi timer
@@ -441,7 +441,7 @@ public class Timer extends AppCompatActivity {
             public void onFinish() {
                 if (trenutniInterval == brojIntervala) {
                     resetirajSve();
-                    ((TextView) findViewById(R.id.timerTextView)).setText("ZAVRŠENO ODBROJAVANJE");
+                    ((TextView) findViewById(R.id.timerTextView)).setText("TIMER JE ZAVRŠIO");
                     pokrenutTimer = false;
                 }
                 else {
