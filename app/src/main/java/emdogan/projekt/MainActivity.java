@@ -1,6 +1,8 @@
 package emdogan.projekt;
 
+import android.app.AlarmManager;
 import android.app.ListActivity;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -33,6 +35,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
@@ -124,6 +127,18 @@ public class MainActivity extends AppCompatActivity {
 
         db.close();
 
+        Calendar calendar = Calendar.getInstance();
+
+        //Svaki dan u 18h dobijemo notifikacije za sutrasnje dogadaje iz kalendara
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+        calendar.set(Calendar.MINUTE, 00);
+        calendar.set(Calendar.SECOND, 00);
+
+        Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
+        intent.setAction("MY_NOTIFICATION_MESSAGE");
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
 

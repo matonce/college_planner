@@ -461,14 +461,20 @@ public class DBAdapter {
     public Cursor getOnDay2(int year, int month, int day)
     {
         Cursor mCursor =
-                db.query(DATABASE_TABLE6, new String[] {KEY_SAT, KEY_MIN, KEY_PORUKA}, KEY_DAN + "=" + day + " AND " +
-                        KEY_MJ + "=" + month + " AND " + KEY_GOD + "=" + year, null, null, null, KEY_SAT + ", " + KEY_MIN);
+                db.query(DATABASE_TABLE6, new String[] {KEY_SAT, KEY_MIN, KEY_PORUKA}, KEY_DAN + "='" + day + "' AND " +
+                        KEY_MJ + "='" + month + "' AND " + KEY_GOD + "='" + year + "'", null, null, null, KEY_SAT + ", " + KEY_MIN);
 
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
         return mCursor;
 
+    }
+
+
+    public Cursor getAllTasks()
+    {
+        return db.query(DATABASE_TABLE6, new String[] {KEY_DAN, KEY_MJ, KEY_GOD, KEY_SAT, KEY_MIN, KEY_PORUKA}, null, null, null, null, null);
     }
 
 }

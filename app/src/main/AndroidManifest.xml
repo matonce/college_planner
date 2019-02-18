@@ -3,6 +3,8 @@
     package="emdogan.projekt">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+
 
     <application
         android:allowBackup="true"
@@ -30,6 +32,8 @@
             </intent-filter>
         </activity>
         <receiver android:name=".MyBroadcastReceiver" >
+        </receiver>
+        <receiver android:name=".Notification_reciever" >
         </receiver>
         <activity
             android:name=".Predmeti"

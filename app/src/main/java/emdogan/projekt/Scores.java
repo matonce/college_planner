@@ -35,6 +35,7 @@ public class Scores extends AppCompatActivity {
 
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.icons_container), iconFont);
+        FontManager.markAsIconContainer(findViewById(R.id.include), iconFont);
 
         Button button = (Button) findViewById(R.id.scoresButton);
         button.setTextColor(Color.parseColor("#c98300"));
